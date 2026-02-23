@@ -1,6 +1,6 @@
 # PM Tools for Claude Code
 
-Simple status updates using Claude Code. Type `/team-status`, get Slack-ready output.
+Simple status updates using Claude Code. Works with Linear, Granola, and Notion. Type `/team-status`, get Slack-ready output.
 
 <p align="center">
   <img width="600" alt="PM Tools Overview" src="https://github.com/user-attachments/assets/39222af1-c639-4999-9af1-7f318843f666" />
@@ -24,9 +24,9 @@ Setup asks for your name, email, and teams. Then open Claude Code, type `/mcp` t
 
 | | |
 |---------|-------------|
-| 📊 `/pm-claude-skills:team-status last week` | **Shipped** → **In Progress** → **Blocked**<br/>What your team shipped, what's moving, what's stuck |
-| 👤 `/pm-claude-skills:my-status since Monday` | 🟢🟡🔴 **PROGRESS** → **NEXT** → **RISKS**<br/>Your wins, upcoming work, what needs help |
-| 🤝 `/pm-claude-skills:meeting-digest partnership` | **tl;dr** + **Key Points** + **Action Items**<br/>Instant recap ready to post in Slack |
+| 📊 `/team-status` | What your team shipped, what's in progress, what's blocked |
+| 👤 `/my-status` | Your progress, upcoming work, and risks |
+| 🤝 `/meeting-digest` | Meeting summary with key points and action items |
 
 💡 All outputs are Slack-ready — just copy and paste
 
