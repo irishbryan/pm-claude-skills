@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_DIR="$(dirname "$SCRIPT_DIR")"
+
+cd "$REPO_DIR"
+
+echo "Pulling latest skills..."
+git pull --ff-only
+
+echo "Updating plugin..."
+claude plugin marketplace update pm-claude-skills >/dev/null 2>&1
+claude plugin update pm-claude-skills >/dev/null 2>&1
+
+echo "Done. Skills and commands updated — personal config untouched."

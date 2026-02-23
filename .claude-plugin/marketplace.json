@@ -1,0 +1,13 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "pm-claude-skills",
+  "description": "PM team skills for Claude Code",
+  "owner": { "name": "PM Team" },
+  "plugins": [{
+    "name": "pm-claude-skills",
+    "description": "PM workflow skills: team status, personal status, meeting digests",
+    "version": "1.0.0",
+    "source": "./plugins/pm-claude-skills",
+    "category": "productivity"
+  }]
+}

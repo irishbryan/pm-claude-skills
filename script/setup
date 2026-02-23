@@ -1,0 +1,172 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_DIR="$(dirname "$SCRIPT_DIR")"
+PM_LOCAL="$HOME/.claude/pm-claude-skills.local.md"
+
+# ---------------------------------------------------------------------------
+# Banner
+# ---------------------------------------------------------------------------
+echo ""
+echo "============================================"
+echo "  PM Tools Setup"
+echo "  Installs shared Claude Code skills globally"
+echo "============================================"
+echo ""
+
+# ---------------------------------------------------------------------------
+# Prerequisites
+# ---------------------------------------------------------------------------
+if ! command -v claude &>/dev/null; then
+  echo "Error: 'claude' CLI not found."
+  echo "Install it from: https://docs.anthropic.com/en/docs/claude-code/overview"
+  exit 1
+fi
+
+# ---------------------------------------------------------------------------
+# Register marketplace + install plugin
+# ---------------------------------------------------------------------------
+echo "[1/4] Installing pm-claude-skills plugin..."
+claude plugin marketplace remove pm-claude-skills >/dev/null 2>&1 || true
+claude plugin marketplace add "$REPO_DIR" >/dev/null 2>&1
+claude plugin uninstall pm-claude-skills >/dev/null 2>&1 || true
+claude plugin install pm-claude-skills@pm-claude-skills >/dev/null 2>&1
+echo "      Done. Linear MCP included — authenticate with /mcp in Claude."
+
+# ---------------------------------------------------------------------------
+# Personalise — how Claude knows about you as a PM
+# ---------------------------------------------------------------------------
+echo "[2/4] Personal configuration..."
+if [ -f "$PM_LOCAL" ]; then
+  echo "      [skip] $PM_LOCAL (already exists, keeping your config)"
+else
+  echo ""
+  read -rp "  What's your first name? " PM_NAME
+  read -rp "  What's your work email? " PM_EMAIL
+  read -rp "  What are your primary focus areas as a PM? " PM_FOCUS
+  echo ""
+  echo "  Which teams do you want to track in team-status reports?"
+  echo "  (Enter team names comma-separated, or press Enter to skip)"
+  read -rp "  Teams: " PM_TEAMS
+
+  mkdir -p "$(dirname "$PM_LOCAL")"
+  cat > "$PM_LOCAL" <<EOF
+# PM Tools Personal Context
+- Name: ${PM_NAME}
+- Email: ${PM_EMAIL}
+- Focus areas: ${PM_FOCUS}
+
+## Teams
+EOF
+
+  if [ -n "$PM_TEAMS" ]; then
+    # Convert comma-separated list to markdown bullets
+    IFS=',' read -ra TEAM_ARRAY <<< "$PM_TEAMS"
+    for team in "${TEAM_ARRAY[@]}"; do
+      # Trim whitespace
+      team=$(echo "$team" | xargs)
+      echo "- $team" >> "$PM_LOCAL"
+    done
+  else
+    echo "# (Add team names here, one per line with '- ' prefix)" >> "$PM_LOCAL"
+  fi
+
+  cat >> "$PM_LOCAL" <<EOF
+
+## Session behavior
+- "last week" means previous Monday–Friday
+- For personal status, scope to issues assigned to me
+- For team status, scope to my teams listed above
+EOF
+
+  echo "      Wrote $PM_LOCAL"
+  echo "      (Edit ~/.claude/pm-claude-skills.local.md to adjust teams or preferences.)"
+fi
+
+# ---------------------------------------------------------------------------
+# MCP connections — configure or skip each one
+# ---------------------------------------------------------------------------
+echo ""
+echo "[3/4] MCP connections"
+
+MCP_CONFIG="$REPO_DIR/mcp-servers.json"
+
+read -rp "  Set up MCP connections now? You can always do this later. (y/n) " SETUP_MCPS
+if [[ "$SETUP_MCPS" =~ ^[Yy] ]]; then
+  if [ -f "$MCP_CONFIG" ] && command -v python3 &>/dev/null; then
+    COUNT=$(python3 -c "import json; data=json.load(open('$MCP_CONFIG')); print(len(data))")
+    for (( i=0; i<COUNT; i++ )); do
+      NAME=$(python3 -c "import json; data=json.load(open('$MCP_CONFIG')); print(data[$i]['name'])")
+      TYPE=$(python3 -c "import json; data=json.load(open('$MCP_CONFIG')); print(data[$i]['type'])")
+      PROMPT=$(python3 -c "import json; data=json.load(open('$MCP_CONFIG')); print(data[$i]['prompt'])")
+
+      read -rp "  $PROMPT (y/n) " ANSWER
+      if [[ "$ANSWER" =~ ^[Yy] ]]; then
+        if [ "$TYPE" = "mcp" ]; then
+          TRANSPORT=$(python3 -c "import json; data=json.load(open('$MCP_CONFIG')); print(data[$i].get('transport','stdio'))")
+          URL=$(python3 -c "import json; data=json.load(open('$MCP_CONFIG')); print(data[$i].get('url',''))")
+          SCOPE=$(python3 -c "import json; data=json.load(open('$MCP_CONFIG')); print(data[$i].get('scope','user'))")
+          # Check if MCP already exists
+          if claude mcp list 2>/dev/null | grep -q "^$NAME "; then
+            echo "      $NAME MCP already configured (skipping)."
+          else
+            claude mcp add --transport "$TRANSPORT" --scope "$SCOPE" "$NAME" "$URL" 2>/dev/null \
+              && echo "      $NAME MCP added." \
+              || echo "      $NAME MCP setup failed — you can add it later via /mcp."
+          fi
+        elif [ "$TYPE" = "plugin" ]; then
+          if claude plugin list 2>/dev/null | grep -q "^$NAME "; then
+            echo "      $NAME plugin already installed (skipping)."
+          else
+            claude plugin install "$NAME" 2>/dev/null \
+              && echo "      $NAME plugin installed." \
+              || echo "      $NAME plugin install failed — you can add it later."
+          fi
+        fi
+      else
+        echo "      Skipped $NAME."
+      fi
+    done
+  else
+    # Hardcoded fallback for users without config file or python3
+    read -rp "  Install the Notion plugin? (y/n) " INSTALL_NOTION
+    if [[ "$INSTALL_NOTION" =~ ^[Yy] ]]; then
+      if claude plugin list 2>/dev/null | grep -q "^Notion "; then
+        echo "      Notion plugin already installed (skipping)."
+      else
+        claude plugin install Notion 2>/dev/null \
+          && echo "      Notion plugin installed." \
+          || echo "      Notion plugin install failed — you can add it later."
+      fi
+    else
+      echo "      Skipped Notion."
+    fi
+
+    read -rp "  Set up Granola MCP for meeting notes? (y/n) " INSTALL_GRANOLA
+    if [[ "$INSTALL_GRANOLA" =~ ^[Yy] ]]; then
+      if claude mcp list 2>/dev/null | grep -q "^granola "; then
+        echo "      Granola MCP already configured (skipping)."
+      else
+        claude mcp add --transport http --scope user granola https://mcp.granola.ai/mcp 2>/dev/null \
+          && echo "      Granola MCP added." \
+          || echo "      Granola MCP setup failed — you can add it later via /mcp."
+      fi
+    else
+      echo "      Skipped Granola."
+    fi
+  fi
+else
+  echo "      Skipped. Re-run script/setup to configure later."
+fi
+
+# ---------------------------------------------------------------------------
+# Done
+# ---------------------------------------------------------------------------
+echo ""
+echo "[4/4] Done!"
+echo ""
+echo "  Run 'claude' and try: /team-status, /my-status, /meeting-digest"
+echo "  Authenticate MCP servers when prompted (type /mcp)."
+echo "  Update skills later: cd pm-claude-skills && script/update"
+echo ""

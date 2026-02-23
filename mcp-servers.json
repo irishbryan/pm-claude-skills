@@ -1,0 +1,15 @@
+[
+  {
+    "name": "granola",
+    "type": "mcp",
+    "transport": "http",
+    "url": "https://mcp.granola.ai/mcp",
+    "scope": "user",
+    "prompt": "Do you use Granola for meeting notes?"
+  },
+  {
+    "name": "Notion",
+    "type": "plugin",
+    "prompt": "Install the Notion plugin?"
+  }
+]
