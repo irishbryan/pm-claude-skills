@@ -2,6 +2,8 @@
 
 **Simple status updates using Claude Code.** Type `/team-status`, get Slack-ready output
 
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/39222af1-c639-4999-9af1-7f318843f666" />
+
 ## Install
 
 **Prerequisites:** [Claude Code CLI](https://docs.anthropic.com/en/docs/claude-code/overview) must be installed first.
