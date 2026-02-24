@@ -6,19 +6,12 @@ Simple status updates using Claude Code. Type `/team-status`, `/my-status` and g
   <img width="800" alt="PM Tools Overview" src="https://github.com/user-attachments/assets/d6cfc988-1056-4a23-962a-90e5c31852a0" />
 </p>
 
-## Install
+## Quick Start
 
-**Prerequisites:** [Claude Code CLI](https://docs.anthropic.com/en/docs/claude-code/overview)
-
-```bash
-git clone <repo-url> pm-claude-skills && cd pm-claude-skills && script/setup
-```
-
-`script/setup` personalizes a private context file. Then open Claude Code and type `/mcp` to connect your tools. 
-
-```
-/my-status for last week
-```
+1. **Prerequisites:** [Claude Code CLI](https://docs.anthropic.com/en/docs/claude-code/overview)
+2. Clone repo and run `script/setup`
+3. Open claude and connect MCPs (`/mcp`)
+4. `/my-status for last week`
 
 ## Commands
 
