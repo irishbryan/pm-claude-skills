@@ -22,6 +22,8 @@ allowed-tools:
 
 ## Instructions
 
+**TEMPLATE ENFORCEMENT**: You MUST read and follow `@templates/team-status-template.md` EXACTLY. The template defines four required sections: Shipped, In Progress, Blocked / At Risk, and Key Upcoming Dates. Do not deviate from this structure or add extra sections.
+
 1. Read `~/.claude/pm-claude-skills.local.md` for user context. If teams are configured, use them to scope queries.
 2. Query Linear MCP for team's work over requested period (default: last 7 days):
    - Completed issues → Shipped section
@@ -33,7 +35,9 @@ allowed-tools:
    - Current blockers with context
    - Use context but do NOT include Granola citation links (they are private)
 4. Follow `@templates/team-status-template.md` exactly:
-   - NO "Summary" section - jump straight to Shipped
+   - Use ONLY these four sections: ## Shipped, ## In Progress, ## Blocked / At Risk, ## Key Upcoming Dates
+   - NO "Summary" or other extra sections - jump straight to Shipped
+   - Use bullet points (-), NOT numbered lists
    - Format: **[Project Name](linear-url)**: {Description}
    - Project names are the links (bold + hyperlink), NOT issue IDs
    - Keep descriptions succinct but informative (avoid follow-up questions)

@@ -19,6 +19,8 @@ allowed-tools:
 
 ## Instructions
 
+**TEMPLATE ENFORCEMENT**: You MUST read and follow `@templates/my-status-template.md` EXACTLY. The template defines the required format with three sections: PROGRESS, NEXT, and RISKS/ASKS. Do not deviate from this structure.
+
 ### 1. Load Context
 - Read `~/.claude/pm-claude-skills.local.md` for user context (name, email, focus areas, team preferences)
 - Check if teams are specified in config; if not, query Linear to discover user's teams
@@ -73,7 +75,9 @@ For each risk or ask:
 - Query Granola specifically for strategic risks beyond just blocked Linear issues
 
 ### 6. Format Requirements
-Follow `@templates/my-status-template.md`:
+**CRITICAL**: Follow `@templates/my-status-template.md` EXACTLY:
+- Use ONLY these three sections in this order: ## PROGRESS, ## NEXT, ## RISKS/ASKS
+- Use numbered lists (1., 2., 3.) within each section, NOT headers or bullet points
 - Each item: one line preferred, two lines max
 - Max 5-6 items per section (this is a manager-level overview)
 - Group by project when possible
@@ -81,3 +85,4 @@ Follow `@templates/my-status-template.md`:
 - Total output: ≤250 words (increased from 200 to accommodate detail)
 - Format: Slack-ready, scannable, BLUF style
 - Focus on outcomes and impact, not issue IDs
+- Do NOT add extra sections like "Work Summary", "Strategic Planning", etc.

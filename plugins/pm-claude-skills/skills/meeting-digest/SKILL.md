@@ -17,6 +17,8 @@ allowed-tools:
 
 ## Instructions
 
+**TEMPLATE ENFORCEMENT**: You MUST read and follow `@templates/meeting-digest-template.md` EXACTLY. The template defines the required format with a tl;dr, Key Discussion Points, and Action Items. Do not deviate from this structure.
+
 1. Read `~/.claude/pm-claude-skills.local.md` to get the user's name and preferences.
 2. Check if the Granola MCP server is connected. If not, print the following message and stop:
    ```
@@ -27,7 +29,12 @@ allowed-tools:
    - One-sentence tl;dr (concrete outcome or decision)
    - Up to 3 key discussion points (high-signal only, be specific)
    - Action items with clear owners and deliverables
-5. Follow `@templates/meeting-digest-template.md` exactly.
+5. Follow `@templates/meeting-digest-template.md` exactly:
+   - Title format: # {Meeting Title}
+   - Must include: **tl;dr:**, **Key Discussion Points:**, **Action Items:**
+   - Use numbered lists (1., 2., 3.) for discussion points
+   - Use bullet points (-) for action items
+   - Do NOT add extra sections or change the structure
 6. Quality gates:
    - tl;dr must be one clear sentence, not generic
    - Max 3 discussion points — pick the most important
