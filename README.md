@@ -3,7 +3,7 @@
 Simple status updates using Claude Code. Works with Linear, Granola, and Notion. Type `/team-status`, get Slack-ready output.
 
 <p align="center">
-  <img width="600" alt="PM Tools Overview" src="https://github.com/user-attachments/assets/39222af1-c639-4999-9af1-7f318843f666" />
+  <img width="600" alt="PM Tools Overview" src="https://github.com/user-attachments/assets/d6cfc988-1056-4a23-962a-90e5c31852a0" />
 </p>
 
 ## Install
@@ -14,10 +14,10 @@ Simple status updates using Claude Code. Works with Linear, Granola, and Notion.
 git clone <repo-url> pm-claude-skills && cd pm-claude-skills && script/setup
 ```
 
-Setup adds your name, email, and teams to private context file. Then open Claude Code and type `/mcp` to connect your tools. 
+`script/setup` personalizes a private context file. Then open Claude Code and type `/mcp` to connect your tools. 
 
 ```
-/pm-claude-skills:my-status for last week
+/my-status for last week
 ```
 
 ## Commands
