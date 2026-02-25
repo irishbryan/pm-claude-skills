@@ -33,8 +33,11 @@ Execute multiple Slack searches to gather comprehensive results:
 1. `mentions:@me after:{N}d` — messages where you were mentioned
 2. `mentions:@me has:reaction after:{N}d` — high-engagement mentions
 3. `(urgent OR asap OR blocker OR "decision needed") mentions:@me after:{N}d` — urgency keywords
-4. `from:{key_stakeholder} after:{N}d` — messages from leadership/key people (if configured)
-5. `in:{key_channel} has:reaction after:{N}d` — high-engagement in key channels (if configured)
+4. `from:@me after:{N}d` — messages YOU sent (high signal for follow-ups)
+5. `from:@me has:reaction after:{N}d` — your messages that got engagement
+6. `from:@me has:thread after:{N}d` — your messages with thread replies
+7. `from:{key_stakeholder} after:{N}d` — messages from leadership/key people (if configured)
+8. `in:{key_channel} has:reaction after:{N}d` — high-engagement in key channels (if configured)
 
 Combine results, deduplicate by message timestamp/ID, then score and categorize.
 
@@ -47,24 +50,29 @@ Categorize each message using the following criteria:
 - From CEO/VP/key stakeholder in last 24 hours
 - Explicit deadline today
 - Direct question to user requiring immediate response
+- **Your sent message**: Question you asked >24h ago with new thread replies (needs follow-up)
 
 **🟡 ACTION NEEDED (This Week):**
 - Contains: "decision needed", "needs approval", "can you", "please review"
 - @mentions with asks or questions
 - Follow-up requests in threads where user participated
 - Deadlines within current week
+- **Your sent message**: Request/question with 3+ reactions or thread activity (awaiting response)
+- **Your sent message**: Contains "?" and has replies (your question got answered)
 
 **🟠 FOR REVIEW:**
 - 5+ reactions indicating high engagement
 - Strategic keywords: "RFC", "launch", "roadmap", "announcement"
 - In user's key channels (from config)
 - Thread discussions with significant activity (10+ messages)
+- **Your sent message**: Announcement/update with 5+ reactions (high engagement on your content)
 
 **🟢 FYI:**
 - General updates in followed channels
 - Lower priority mentions
 - Informational announcements
 - 3-4 reactions (moderate engagement)
+- **Your sent message**: Standard updates with 1-2 reactions (acknowledged but low priority)
 
 ### 4. Message Formatting
 
