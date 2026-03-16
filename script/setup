@@ -44,11 +44,12 @@ assert_managed_paths_are_namespaced() {
     "$CLAUDE_COMMANDS_TARGET/pm-skills:my-status.md" \
     "$CLAUDE_COMMANDS_TARGET/pm-skills:team-status.md" \
     "$CLAUDE_COMMANDS_TARGET/pm-skills:meeting-digest.md" \
-    "$CLAUDE_COMMANDS_TARGET/pm-skills:slack-recap.md"; do
+    "$CLAUDE_COMMANDS_TARGET/pm-skills:slack-recap.md" \
+    "$CLAUDE_COMMANDS_TARGET/pm-skills:shape-product-pitch.md"; do
     ensure_namespaced_path "$command_file"
   done
 
-  for skill in my-status team-status meeting-digest slack-recap; do
+  for skill in my-status team-status meeting-digest slack-recap shape-product-pitch; do
     ensure_namespaced_path "$CLAUDE_SKILLS_TARGET/pm-skills-$skill"
   done
 }
@@ -441,6 +442,7 @@ install_claude() {
     "$CLAUDE_COMMANDS_TARGET/pm-skills:team-status.md"
     "$CLAUDE_COMMANDS_TARGET/pm-skills:meeting-digest.md"
     "$CLAUDE_COMMANDS_TARGET/pm-skills:slack-recap.md"
+    "$CLAUDE_COMMANDS_TARGET/pm-skills:shape-product-pitch.md"
   )
   local command_file
   for command_file in "${command_files[@]}"; do
@@ -456,6 +458,7 @@ install_claude() {
     "team-status"
     "meeting-digest"
     "slack-recap"
+    "shape-product-pitch"
   )
   local skill
   for skill in "${skill_names[@]}"; do
@@ -510,6 +513,13 @@ install_claude() {
     "slack-recap" \
     "$CLAUDE_SKILLS_TARGET/pm-skills-slack-recap" \
     "slack-recap-template.md"
+  write_claude_command \
+    "$CLAUDE_COMMANDS_TARGET/pm-skills:shape-product-pitch.md" \
+    "Shape a product pitch using Shape Up methodology" \
+    "[problem or idea]" \
+    "shape-product-pitch" \
+    "$CLAUDE_SKILLS_TARGET/pm-skills-shape-product-pitch" \
+    "shape-product-pitch-template.md"
 
   print_result "Installed" "~/.claude/commands, ~/.claude/skills"
   CLAUDE_STATUS="installed"

@@ -1,0 +1,1 @@
+../../../../plugins/pm-skills/skills/shape-product-pitch/templates/shape-product-pitch-template.md

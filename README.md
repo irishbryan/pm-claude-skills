@@ -22,6 +22,7 @@ Essential PM skills for Claude Code and Codex.
 - `pm-skills:my-status` for personal progress, next steps, and risks
 - `pm-skills:meeting-digest` for decisions and action items from meetings
 - `pm-skills:slack-recap` for important Slack follow-ups
+- `pm-skills:shape-product-pitch` for shaping product pitches using Shape Up methodology
 
 ## Works Across Tools
 
