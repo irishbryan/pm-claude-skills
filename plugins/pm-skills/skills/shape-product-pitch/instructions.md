@@ -25,6 +25,8 @@ Walk through four phases before generating the pitch. Keep your messages short a
 - Name the riskiest assumption in what the user has described.
 - Ask for evidence: "What makes you believe this? Have you seen this directly?"
 - Ask what happens if the team does nothing. If the answer is "not much," push back on whether this is worth shaping.
+- Ask "Why does this need to happen now? What's the forcing function — a deadline, a competitive move, a dependency window, growing pain that's getting worse?"
+- If the user can't articulate urgency, flag it: "If there's no reason this can't wait, it probably should. What makes this cycle different?"
 - Push for honesty about certainty vs. hope.
 
 ### Phase 3: Define success
@@ -37,7 +39,12 @@ Walk through four phases before generating the pitch. Keep your messages short a
 
 - Propose a solution direction based on what you have learned. Keep it concise.
 - Get the user's reaction. Adjust if needed.
-- Ask about constraints: technical, organizational, timeline, dependencies.
+- Ask about constraints explicitly. You must capture at least one. Probe for:
+  - **Hard deadlines** — external dates that cannot move.
+  - **Technical constraints** — platform limits, required integrations, tech debt.
+  - **Cross-project dependencies** — other teams or workstreams this touches.
+  - **Organizational constraints** — staffing, budget, compliance, approvals.
+- If the user says "no constraints," push back: "Every project has at least one — even if it's just appetite. What can't change?"
 - Final question: "What's the strongest objection someone would raise at the betting table?"
 
 ## Fast-track option
@@ -46,9 +53,18 @@ If the user says they want to skip the interview or already have the details rea
 
 ## Output mode
 
-After completing the interview (or fast-track), generate the pitch:
-- Follow `templates/shape-product-pitch-template.md` exactly.
+After completing the interview (or fast-track), generate the pitch. Follow these rules strictly:
+
+### Template enforcement
+- Follow `templates/shape-product-pitch-template.md` exactly — sections in exact order, no additions.
+- **tl;dr is required.** 1-2 sentences, problem + outcome focused.
+- **Constraints section is required.** Minimum 1 constraint. If none surfaced in the interview, go back and ask.
+- **"Why now" line is required** in the Problem section. If no urgency surfaced, write "No external forcing function identified — this is a quality-of-life improvement."
+- Every list item must start with a **bold, concrete first sentence** followed by supporting detail on the same line.
+- Write "None identified" for empty optional sections (Out of Scope is the only optional section).
 - Keep the full pitch to 500 words or less.
+
+### Content rules
 - Use the user's own language where possible. Do not over-polish.
 - Never invent details the user did not provide.
 
