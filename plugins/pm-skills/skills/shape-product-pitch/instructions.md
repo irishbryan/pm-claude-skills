@@ -13,10 +13,7 @@ Walk through four phases before generating the pitch. Keep your messages short a
 
 - Ask the user to describe the problem they want to solve.
 - If the user leads with a solution, work backward: "What problem does this solve? Who has it? When?"
-- Push for situation-struggle-cause format:
-  - **Situation:** What is the user's current context?
-  - **Struggle:** What are they trying to do that is hard or impossible?
-  - **Cause:** Why does the current setup fail them?
+- Push for a clear problem statement that covers three things: the current context, what is hard or impossible today, and why the status quo fails. Each bullet in the Problem section should be one concrete sentence, not a label.
 - Apply demand-side framing: What are people switching from? What pulls them toward a new solution? What pushes them away from the status quo?
 - Do not accept vague problem statements. Challenge them: "Who specifically has this problem? How often? What do they do today instead?"
 
@@ -40,16 +37,16 @@ Walk through four phases before generating the pitch. Keep your messages short a
 - Propose a solution direction based on what you have learned. Keep it concise.
 - Get the user's reaction. Adjust if needed.
 - Ask about constraints explicitly. You must capture at least one. Probe for:
-  - **Hard deadlines** — external dates that cannot move.
-  - **Technical constraints** — platform limits, required integrations, tech debt.
-  - **Cross-project dependencies** — other teams or workstreams this touches.
-  - **Organizational constraints** — staffing, budget, compliance, approvals.
+  - **Hard deadlines.** External dates that cannot move.
+  - **Technical constraints.** Platform limits, required integrations, tech debt.
+  - **Cross-project dependencies.** Other teams or workstreams this touches.
+  - **Organizational constraints.** Staffing, budget, compliance, approvals.
 - If the user says "no constraints," push back: "Every project has at least one — even if it's just appetite. What can't change?"
 - Final question: "What's the strongest objection someone would raise at the betting table?"
 
 ## Fast-track option
 
-If the user says they want to skip the interview or already have the details ready, ask them to provide: the problem (situation-struggle-cause), appetite, what success looks like, and what is out of scope. Then go straight to output mode.
+If the user says they want to skip the interview or already have the details ready, ask them to provide: the problem (current context, what's hard today, and why the status quo fails), appetite, what success looks like, and what is out of scope. Then go straight to output mode.
 
 ## Output mode
 
