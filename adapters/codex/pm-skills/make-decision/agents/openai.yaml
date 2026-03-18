@@ -1,0 +1,3 @@
+interface:
+  display_name: "pm-skills: make-decision"
+  short_description: "Decision doc drafting with a strict traffic-light table"

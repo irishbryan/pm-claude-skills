@@ -16,13 +16,14 @@ CODEX_STATUS="not installed"
 REFRESH_PROFILE="false"
 PROFILE_ONLY="false"
 
-SKILLS=(my-status team-status meeting-digest slack-recap shape-product-pitch)
+SKILLS=(my-status team-status meeting-digest slack-recap shape-product-pitch make-decision)
 SKILL_DESCRIPTIONS=(
   "Generate your personal status update"
   "Generate a team-wide status update"
   "Summarize recent meetings and extract action items"
   "Recap important Slack messages requiring attention"
   "Shape a product pitch using Shape Up methodology"
+  "Draft a decision doc with a structured tradeoff table"
 )
 SKILL_ARG_HINTS=(
   "[time period]"
@@ -30,6 +31,7 @@ SKILL_ARG_HINTS=(
   "[topic or date range]"
   "[time period]"
   "[problem or idea]"
+  "[decision or tradeoff]"
 )
 
 ensure_namespaced_path() {

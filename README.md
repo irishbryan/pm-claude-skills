@@ -21,6 +21,7 @@ Opinionated product management skills for Claude Code and Codex.
 - `meeting-digest`: pull decisions and action items from meetings
 - `slack-recap`: catch up on important Slack threads that need attention
 - `shape-product-pitch`: turn a rough idea into a Shape Up style pitch
+- `make-decision`: interview the PM and draft a decision doc with a traffic-light comparison table
 
 <p align="center">
   <img width="1000" alt="PM Tools Overview" src="https://github.com/user-attachments/assets/d6cfc988-1056-4a23-962a-90e5c31852a0" />

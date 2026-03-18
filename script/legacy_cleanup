@@ -12,6 +12,7 @@ LEGACY_SKILLS=(
   "meeting-digest"
   "slack-recap"
   "shape-product-pitch"
+  "make-decision"
 )
 
 usage() {

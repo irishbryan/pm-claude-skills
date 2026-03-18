@@ -10,7 +10,7 @@ CODEX_SOURCE="$REPO_DIR/adapters/codex/pm-skills"
 CODEX_TARGET="$HOME/.codex/skills/pm-skills"
 FORCE="false"
 
-SKILLS=(my-status team-status meeting-digest slack-recap shape-product-pitch)
+SKILLS=(my-status team-status meeting-digest slack-recap shape-product-pitch make-decision)
 
 ensure_namespaced_path() {
   local base

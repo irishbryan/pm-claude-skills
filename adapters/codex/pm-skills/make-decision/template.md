@@ -1,0 +1,1 @@
+../../../../plugins/pm-skills/skills/make-decision/templates/make-decision-template.md
