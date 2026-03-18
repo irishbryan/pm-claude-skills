@@ -145,10 +145,6 @@ write_profile() {
       printf '\n## Slack\n'
       printf -- '- Main channels or groups: %s\n' "$slack_channels"
     fi
-    printf '\n## Session behavior\n'
-    printf -- '- "last week" means previous Monday-Friday\n'
-    printf -- '- For personal status, include coordination work as well as directly assigned work\n'
-    printf -- '- For team status, prefer the teams listed above when they are present\n'
   } >"$PROFILE_PATH"
 }
 
