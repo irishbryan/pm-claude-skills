@@ -8,11 +8,16 @@ PROFILE_PATH="$CONFIG_ROOT/profile.md"
 CLAUDE_COMMANDS_TARGET="$HOME/.claude/commands"
 CLAUDE_SKILLS_SOURCE="$REPO_DIR/plugins/pm-skills/skills"
 CLAUDE_COMMAND_WATERMARK="<!-- managed-by: pm-skills -->"
+LEGACY_PROFILE="$HOME/.claude/pm-claude-skills.local.md"
+CLAUDE_SKILLS_TARGET="$HOME/.claude/skills"
 CODEX_SOURCE="$REPO_DIR/adapters/codex/pm-skills"
 CODEX_TARGET="$HOME/.codex/skills/pm-skills"
 PROFILE_STATUS=""
 CLAUDE_STATUS="not installed"
 CODEX_STATUS="not installed"
+HAS_CLAUDE="false"
+LEGACY_PLUGIN_INSTALLED="false"
+SECTION_PRINTED="false"
 REFRESH_PROFILE="false"
 PROFILE_ONLY="false"
 
@@ -82,10 +87,26 @@ while [ $# -gt 0 ]; do
   shift
 done
 
-print_banner() { echo "" && echo "pm-skills setup"; }
-print_section() { echo "" && echo "$1"; }
-print_result() { echo "$1: $2"; }
+print_section() {
+  if [ "$SECTION_PRINTED" = "true" ]; then
+    echo ""
+  fi
+  echo "$1"
+  SECTION_PRINTED="true"
+}
 trim() { printf '%s' "$1" | xargs; }
+display_path() {
+  case "$1" in
+  "$HOME") printf '~\n' ;;
+  "$HOME"/*) printf '~/%s\n' "${1#"$HOME"/}" ;;
+  *) printf '%s\n' "$1" ;;
+  esac
+}
+abort_setup() {
+  echo ""
+  exit 130
+}
+trap abort_setup INT
 
 profile_value() {
   local file="$1" key="$2"
@@ -110,18 +131,130 @@ profile_section_list() {
 prompt_with_default() {
   local prompt="$1" default_value="${2:-}" value=""
   if [ -n "$default_value" ]; then
-    read -rp "$prompt [$default_value]: " value
+    read -r -p "$prompt [$default_value]: " value || exit 130
     printf '%s' "${value:-$default_value}"
   else
-    read -rp "$prompt: " value
+    read -r -p "$prompt: " value || exit 130
     printf '%s' "$value"
   fi
 }
 
 confirm_optional() {
   local reply=""
-  read -rp "$1 [y/N]: " reply
+  read -r -p "$1 [y/N]: " reply || exit 130
   [[ "$reply" =~ ^[Yy] ]]
+}
+
+skill_symlink_path() {
+  printf '%s/pm-skills-%s' "$CLAUDE_SKILLS_TARGET" "$1"
+}
+
+skill_symlink_owned() {
+  local skill="$1"
+  local path
+  local target
+
+  path="$(skill_symlink_path "$skill")"
+  [ -L "$path" ] || return 1
+
+  target="$(readlink "$path")"
+  case "$target" in
+  */plugins/pm-skills/skills/"$skill") return 0 ;;
+  */plugins/pm-claude-skills/skills/"$skill") return 0 ;;
+  *) return 1 ;;
+  esac
+}
+
+detect_legacy_plugin() {
+  if ! command -v claude >/dev/null 2>&1; then
+    return
+  fi
+
+  HAS_CLAUDE="true"
+  if claude plugin list 2>/dev/null | grep -q "^pm-claude-skills "; then
+    LEGACY_PLUGIN_INSTALLED="true"
+  fi
+}
+
+find_legacy_configuration() {
+  local skill
+  HAS_CLAUDE="false"
+  LEGACY_PLUGIN_INSTALLED="false"
+  LEGACY_FOUND_LINES=()
+
+  detect_legacy_plugin
+  if [ "$LEGACY_PLUGIN_INSTALLED" = "true" ]; then
+    LEGACY_FOUND_LINES+=("Legacy Claude plugin: pm-claude-skills")
+  fi
+
+  if [ -f "$LEGACY_PROFILE" ]; then
+    LEGACY_FOUND_LINES+=("Legacy profile: $(display_path "$LEGACY_PROFILE")")
+  fi
+
+  for skill in "${SKILLS[@]}"; do
+    if skill_symlink_owned "$skill"; then
+      LEGACY_FOUND_LINES+=("Legacy Claude skill symlink: $(display_path "$(skill_symlink_path "$skill")")")
+    fi
+  done
+}
+
+remove_legacy_plugin() {
+  [ "$LEGACY_PLUGIN_INSTALLED" = "true" ] || return 0
+  claude plugin uninstall pm-claude-skills >/dev/null 2>&1 || true
+  claude plugin marketplace remove pm-claude-skills >/dev/null 2>&1 || true
+  echo "Removed legacy Claude plugin and marketplace entry"
+}
+
+remove_legacy_skill_symlinks() {
+  local skill
+  local path
+
+  for skill in "${SKILLS[@]}"; do
+    if skill_symlink_owned "$skill"; then
+      path="$(skill_symlink_path "$skill")"
+      rm "$path"
+      echo "Removed $(display_path "$path")"
+    fi
+  done
+}
+
+remove_legacy_profile() {
+  [ -f "$LEGACY_PROFILE" ] || return 0
+
+  read -r -p "Delete legacy profile at $(display_path "$LEGACY_PROFILE")? [y/N]: " DELETE_LEGACY_PROFILE || exit 130
+  if [[ "$DELETE_LEGACY_PROFILE" =~ ^[Yy] ]]; then
+    rm "$LEGACY_PROFILE"
+    echo "Removed $(display_path "$LEGACY_PROFILE")"
+  else
+    echo "Kept legacy profile at $(display_path "$LEGACY_PROFILE")"
+  fi
+}
+
+maybe_cleanup_legacy_configuration() {
+  find_legacy_configuration
+
+  if [ "${#LEGACY_FOUND_LINES[@]}" -eq 0 ]; then
+    return
+  fi
+
+  print_section "Legacy configuration"
+  for line in "${LEGACY_FOUND_LINES[@]}"; do
+    echo "$line"
+  done
+
+  read -r -p "Clean up legacy configuration? [y/N]: " CLEANUP_LEGACY || exit 130
+  if [[ ! "$CLEANUP_LEGACY" =~ ^[Yy] ]]; then
+    echo "Skipped legacy configuration cleanup"
+    return
+  fi
+
+  if [ "$HAS_CLAUDE" = "true" ]; then
+    remove_legacy_plugin
+  fi
+  remove_legacy_skill_symlinks
+  remove_legacy_profile
+
+  echo "Legacy cleanup completed"
 }
 
 write_profile() {
@@ -150,7 +283,7 @@ write_profile() {
 
 ensure_profile() {
   if [ -f "$PROFILE_PATH" ] && [ "$REFRESH_PROFILE" != "true" ]; then
-    print_result "Skipped" "profile already exists at $PROFILE_PATH"
+    echo "pm-skills profile already exists at $(display_path "$PROFILE_PATH")"
     PROFILE_STATUS="$PROFILE_PATH"
     return
   fi
@@ -186,7 +319,7 @@ ensure_profile() {
   fi
 
   write_profile "$PM_NAME" "$PM_EMAIL" "$PM_FOCUS" "$PM_TEAMS" "$PM_SLACK_CHANNELS"
-  print_result "Saved" "$PROFILE_PATH"
+  echo "Saved pm-skills profile to $(display_path "$PROFILE_PATH")"
   PROFILE_STATUS="$PROFILE_PATH"
 }
 
@@ -219,9 +352,9 @@ EOF
 install_claude() {
   print_section "Claude Code"
 
-  read -rp "Install Claude Code wrapper? [y/N]: " INSTALL_CLAUDE
+  read -r -p "Install Claude Code wrapper? [y/N]: " INSTALL_CLAUDE || exit 130
   if [[ ! "$INSTALL_CLAUDE" =~ ^[Yy] ]]; then
-    print_result "Skipped" "Claude Code wrapper"
+    echo "Skipped installing pm-skills for Claude Code"
     CLAUDE_STATUS="skipped"
     return
   fi
@@ -232,7 +365,7 @@ install_claude() {
   for i in "${!SKILLS[@]}"; do
     command_file="$CLAUDE_COMMANDS_TARGET/pm-skills:${SKILLS[$i]}.md"
     if [ -e "$command_file" ] && ! command_file_owned "$command_file"; then
-      print_result "Skipped" "$command_file is not managed by pm-skills"
+      echo "Cannot install pm-skills for Claude Code because $(display_path "$command_file") is not managed by pm-skills"
       CLAUDE_STATUS="skipped"
       return
     fi
@@ -242,7 +375,7 @@ install_claude() {
     write_claude_command "$i"
   done
 
-  print_result "Installed" "~/.claude/commands"
+  echo "pm-skills installed for Claude Code at $(display_path "$CLAUDE_COMMANDS_TARGET")"
   CLAUDE_STATUS="installed"
 }
 
@@ -250,14 +383,14 @@ install_codex() {
   print_section "Codex"
 
   if ! command -v codex >/dev/null 2>&1 && [ ! -d "$HOME/.codex" ]; then
-    print_result "Skipped" "codex not detected"
+    echo "Skipped installing pm-skills for Codex because Codex was not detected"
     CODEX_STATUS="unavailable"
     return
   fi
 
-  read -rp "Install Codex wrapper? [y/N]: " INSTALL_CODEX
+  read -r -p "Install Codex wrapper? [y/N]: " INSTALL_CODEX || exit 130
   if [[ ! "$INSTALL_CODEX" =~ ^[Yy] ]]; then
-    print_result "Skipped" "Codex wrapper"
+    echo "Skipped installing pm-skills for Codex"
     CODEX_STATUS="skipped"
     return
   fi
@@ -265,35 +398,34 @@ install_codex() {
   mkdir -p "$(dirname "$CODEX_TARGET")"
 
   if [ -e "$CODEX_TARGET" ] && [ ! -L "$CODEX_TARGET" ]; then
-    print_result "Skipped" "$CODEX_TARGET is not a symlink; remove it manually to replace"
+    echo "Cannot install pm-skills for Codex because $(display_path "$CODEX_TARGET") is not a symlink"
     CODEX_STATUS="skipped"
     return
   fi
 
   [ -L "$CODEX_TARGET" ] && rm "$CODEX_TARGET"
   ln -s "$CODEX_SOURCE" "$CODEX_TARGET"
-  print_result "Installed" "$CODEX_TARGET"
+  echo "pm-skills installed for Codex at $(display_path "$CODEX_TARGET")"
   CODEX_STATUS="installed"
 }
 
 print_next_steps() {
-  print_section "Done"
-  [ "$CLAUDE_STATUS" = "installed" ] && print_result "Claude" "/pm-skills:my-status"
-  [ "$CODEX_STATUS" = "installed" ] && print_result "Codex" "\$pm-skills my-status"
-  print_result "Connect as needed" "Linear, Granola, Notion, Slack, etc."
+  print_section "To get started:"
+  [ "$CODEX_STATUS" = "installed" ] && echo "Codex: Type \$pm-skills"
+  [ "$CLAUDE_STATUS" = "installed" ] && echo "Claude Code: Type /pm-skills"
   echo ""
+  echo "For better results, connect MCPs like Granola, Slack, and Linear."
+  echo "Setup complete."
 }
 
 print_profile_only_next_steps() {
-  print_section "Done"
-  print_result "Saved" "$PROFILE_STATUS"
-  print_result "Next step" "run script/setup to install or update wrappers"
-  echo ""
+  print_section "Setup complete"
+  echo "Run script/setup to install wrappers"
 }
 
-print_banner
 assert_managed_paths_are_namespaced
-print_section "Provide some context on you and your work"
+maybe_cleanup_legacy_configuration
+echo "Personalize skills (all data kept in local file):"
 ensure_profile
 if [ "$PROFILE_ONLY" = "true" ]; then
   print_profile_only_next_steps

@@ -9,6 +9,7 @@ CLAUDE_COMMAND_WATERMARK="<!-- managed-by: pm-skills -->"
 CODEX_SOURCE="$REPO_DIR/adapters/codex/pm-skills"
 CODEX_TARGET="$HOME/.codex/skills/pm-skills"
 FORCE="false"
+SECTION_PRINTED="false"
 
 SKILLS=(my-status team-status meeting-digest slack-recap shape-product-pitch make-decision)
 
@@ -39,8 +40,25 @@ elif [ -n "${1:-}" ]; then
   exit 1
 fi
 
-print_section() { echo "" && echo "$1"; }
-print_result() { echo "$1: $2"; }
+print_section() {
+  if [ "$SECTION_PRINTED" = "true" ]; then
+    echo ""
+  fi
+  echo "$1"
+  SECTION_PRINTED="true"
+}
+display_path() {
+  case "$1" in
+  "$HOME") printf '~\n' ;;
+  "$HOME"/*) printf '~/%s\n' "${1#"$HOME"/}" ;;
+  *) printf '%s\n' "$1" ;;
+  esac
+}
+abort_uninstall() {
+  echo ""
+  exit 130
+}
+trap abort_uninstall INT
 
 command_file_owned() {
   [ -f "$1" ] && grep -Fxq "$CLAUDE_COMMAND_WATERMARK" "$1"
@@ -48,54 +66,72 @@ command_file_owned() {
 
 assert_managed_paths_are_namespaced
 
-echo ""
-if [ "$FORCE" = "true" ]; then
-  echo "pm-skills uninstall (force)"
-else
-  echo "pm-skills uninstall"
+REMOVED_ANY="false"
+
+if [ "$FORCE" != "true" ]; then
+  read -r -p "Do you want to remove pm-skills? [y/N]: " CONFIRM_UNINSTALL || exit 130
+  if [[ ! "$CONFIRM_UNINSTALL" =~ ^[Yy] ]]; then
+    print_section "Done"
+    echo "Nothing to remove"
+    exit 0
+  fi
 fi
 
 print_section "Claude Code"
+CLAUDE_REMOVED="false"
 for skill in "${SKILLS[@]}"; do
   local_file="$CLAUDE_COMMANDS_TARGET/pm-skills:$skill.md"
   if [ "$FORCE" = "true" ]; then
+    [ -e "$local_file" ] && CLAUDE_REMOVED="true"
     rm -f "$local_file"
   elif command_file_owned "$local_file"; then
     rm -f "$local_file"
+    CLAUDE_REMOVED="true"
   fi
 done
-print_result "Removed" "owned pm-skills Claude commands"
+if [ "$CLAUDE_REMOVED" = "true" ]; then
+  echo "Removed pm-skills from Claude Code"
+  REMOVED_ANY="true"
+else
+  echo "pm-skills not found in Claude Code"
+fi
 
 print_section "Codex"
 if [ "$FORCE" = "true" ] && [ -e "$CODEX_TARGET" ]; then
   rm -rf "$CODEX_TARGET"
-  print_result "Removed" "$CODEX_TARGET"
+  echo "Removed pm-skills from Codex at $(display_path "$CODEX_TARGET")"
+  REMOVED_ANY="true"
 elif [ -L "$CODEX_TARGET" ]; then
   rm "$CODEX_TARGET"
-  print_result "Removed" "$CODEX_TARGET"
+  echo "Removed pm-skills from Codex at $(display_path "$CODEX_TARGET")"
+  REMOVED_ANY="true"
 else
-  print_result "Skipped" "no pm-skills Codex symlink found"
+  echo "pm-skills not found in Codex"
 fi
 
 print_section "Profile"
 if [ -f "$PROFILE_PATH" ]; then
   if [ "$FORCE" = "true" ]; then
     rm "$PROFILE_PATH"
-    print_result "Removed" "$PROFILE_PATH"
+    echo "Removed pm-skills profile at $(display_path "$PROFILE_PATH")"
+    REMOVED_ANY="true"
   else
-    read -rp "Delete $PROFILE_PATH? [y/N]: " CONFIRM
+    read -r -p "Delete $(display_path "$PROFILE_PATH")? [y/N]: " CONFIRM || exit 130
     if [[ "$CONFIRM" =~ ^[Yy] ]]; then
       rm "$PROFILE_PATH"
-      print_result "Removed" "$PROFILE_PATH"
+      echo "Removed pm-skills profile at $(display_path "$PROFILE_PATH")"
+      REMOVED_ANY="true"
     else
-      print_result "Kept" "$PROFILE_PATH"
+      echo "Kept pm-skills profile at $(display_path "$PROFILE_PATH")"
     fi
   fi
 else
-  print_result "Skipped" "$PROFILE_PATH not found"
+  echo "pm-skills profile not found at $(display_path "$PROFILE_PATH")"
 fi
 
 print_section "Done"
-print_result "Removed" "pm-skills wrappers"
-print_result "Left untouched" "third-party integrations"
-echo ""
+if [ "$REMOVED_ANY" = "true" ]; then
+  echo "pm-skills uninstall completed"
+else
+  echo "Nothing to remove"
+fi
