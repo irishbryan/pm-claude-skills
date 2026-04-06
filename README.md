@@ -1,41 +1,38 @@
-# PM Skills for your AI tools
+Essential product management skills anyone can use. Get help making decisions, shaping products, writing status updates, summarizing meetings, and more.
 
-Opinionated product management skills for Claude Code and Codex.
+## Skills
 
-## Why PM Skills
-
-- Reuse the same PM skills across Claude Code and Codex
-- Avoid rebuilding prompts for routine PM work
-- Get from setup to a usable output quickly
+| Skill | Problem it solves |
+|---|---|
+| `make-decision` | Turns a fuzzy tradeoff into a concrete decision memo with a recommendation. |
+| `shape-product-pitch` | Turns a rough product idea into a clearer pitch with scope, rationale, and constraints. |
+| `my-status` | Turns recent work into a concise personal update you can paste into Slack, docs, or leadership updates. |
+| `team-status` | Summarizes what a team shipped, what is in flight, and where risks or blockers are building. |
+| `meeting-digest` | Pulls the signal out of recent meetings and turns it into decisions, takeaways, and action items. |
+| `slack-recap` | Helps you catch up on Slack and focus on the threads that actually need attention. |
 
 ## Quick Start
 
-1. Run `script/setup`
-2. Connect the tools you use if needed, such as Linear, Granola, or Slack
-3. Run `/pm-skills:my-status` in Claude Code or `$pm-skills my-status` in Codex
+```bash
+git clone <repo>
+cd pm-skills
+./script/setup
+```
 
-## Included Skills
+That’s it. `script/setup` asks for a few optional defaults, writes local config to `~/.config/pm-skills/config.yml`, and installs Claude Code and Codex skills as symlinks pointing back to this clone.
 
-- `my-status`: draft your weekly update or 1:1 prep from current work
-- `team-status`: summarize shipped, in-progress, and risk items for a team
-- `meeting-digest`: pull decisions and action items from meetings
-- `slack-recap`: catch up on important Slack threads that need attention
-- `shape-product-pitch`: turn a rough idea into a Shape Up style pitch
-- `make-decision`: interview the PM and draft a decision doc with a traffic-light comparison table
+Use:
 
-<p align="center">
-  <img width="1000" alt="PM Tools Overview" src="https://github.com/user-attachments/assets/d6cfc988-1056-4a23-962a-90e5c31852a0" />
-</p>
+- Claude Code: `/pm-skills:my-status`
+- Codex: `$pm-skills:my-status`
 
-## Tool Support
+When new skills are added:
 
-- Claude Code installs command wrappers under `~/.claude/commands`
-- Codex installs skills under `~/.codex/skills/pm-skills`
-- Only `pm-skills`-namespaced files and symlinks are managed
+```bash
+git pull
+./script/setup
+```
 
-## Useful Commands
+Personalization is optional. Skills should still work without local config. Do not store secrets in `~/.config/pm-skills/config.yml`.
 
-- Refresh just your profile: `script/setup --profile-only`
-- Remove installed wrappers: `script/uninstall`
-
-Upgrading from an older install? Run `script/setup` and it will offer to clean up legacy configuration if needed.
+To remove installed artifacts later, run `./script/uninstall`.

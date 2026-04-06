@@ -1,1 +1,0 @@
-../../../../plugins/pm-skills/skills/meeting-digest/templates/meeting-digest-template.md

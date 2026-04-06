@@ -3,135 +3,238 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_DIR="$(dirname "$SCRIPT_DIR")"
-PROFILE_PATH="${XDG_CONFIG_HOME:-$HOME/.config}/pm-skills/profile.md"
+PRIMARY_CONFIG_PATH="${XDG_CONFIG_HOME:-$HOME/.config}/pm-skills/config.yml"
+FALLBACK_CONFIG_PATH="$HOME/.pm-skills/config.yml"
+LEGACY_CONFIG_PATH="${XDG_CONFIG_HOME:-$HOME/.config}/pm-skills/profile.md"
+LEGACY_CLAUDE_PROFILE_PATH="$HOME/.claude/pm-claude-skills.local.md"
 CLAUDE_COMMANDS_TARGET="$HOME/.claude/commands"
-CLAUDE_COMMAND_WATERMARK="<!-- managed-by: pm-skills -->"
-CODEX_SOURCE="$REPO_DIR/adapters/codex/pm-skills"
-CODEX_TARGET="$HOME/.codex/skills/pm-skills"
-FORCE="false"
-SECTION_PRINTED="false"
+CLAUDE_SKILLS_TARGET="$HOME/.claude/skills"
+CODEX_SKILLS_TARGET="$HOME/.codex/skills"
+LEGACY_CODEX_NAMESPACE="$HOME/.codex/skills/pm-skills"
+LEGACY_CLAUDE_PLUGIN_NAME="pm-claude-skills"
+MANAGED_COMMENT="<!-- managed-by: pm-skills repo=irishbryan/pm-skills -->"
+LEGACY_MANAGED_COMMENT="<!-- managed-by: pm-skills -->"
+REMOVED_LINES=()
+CONFIG_LINES=()
 
-SKILLS=(my-status team-status meeting-digest slack-recap shape-product-pitch make-decision)
-
-ensure_namespaced_path() {
-  local base
-  base="$(basename "$1")"
-  case "$base" in
-  pm-skills | pm-skills:* | pm-skills-*) ;;
-  *)
-    echo "Refusing to manage non-namespaced path: $1" >&2
-    exit 1
-    ;;
-  esac
-}
-
-assert_managed_paths_are_namespaced() {
-  ensure_namespaced_path "$CODEX_TARGET"
-  local skill
-  for skill in "${SKILLS[@]}"; do
-    ensure_namespaced_path "$CLAUDE_COMMANDS_TARGET/pm-skills:$skill.md"
-  done
-}
-
-if [ "${1:-}" = "-f" ] || [ "${1:-}" = "--force" ]; then
-  FORCE="true"
-elif [ -n "${1:-}" ]; then
-  echo "Usage: script/uninstall [-f|--force]"
-  exit 1
-fi
-
-print_section() {
-  if [ "$SECTION_PRINTED" = "true" ]; then
-    echo ""
-  fi
-  echo "$1"
-  SECTION_PRINTED="true"
-}
 display_path() {
   case "$1" in
-  "$HOME") printf '~\n' ;;
-  "$HOME"/*) printf '~/%s\n' "${1#"$HOME"/}" ;;
-  *) printf '%s\n' "$1" ;;
+    "$HOME") printf '~\n' ;;
+    "$HOME"/*) printf '~/%s\n' "${1#"$HOME"/}" ;;
+    *) printf '%s\n' "$1" ;;
   esac
 }
-abort_uninstall() {
-  echo ""
-  exit 130
-}
-trap abort_uninstall INT
 
-command_file_owned() {
-  [ -f "$1" ] && grep -Fxq "$CLAUDE_COMMAND_WATERMARK" "$1"
+add_removed_line() {
+  REMOVED_LINES+=("$1")
 }
 
-assert_managed_paths_are_namespaced
+add_config_line() {
+  CONFIG_LINES+=("$1")
+}
 
-REMOVED_ANY="false"
-
-if [ "$FORCE" != "true" ]; then
-  read -r -p "Do you want to remove pm-skills? [y/N]: " CONFIRM_UNINSTALL || exit 130
-  if [[ ! "$CONFIRM_UNINSTALL" =~ ^[Yy] ]]; then
-    print_section "Done"
-    echo "Nothing to remove"
-    exit 0
-  fi
-fi
-
-print_section "Claude Code"
-CLAUDE_REMOVED="false"
-for skill in "${SKILLS[@]}"; do
-  local_file="$CLAUDE_COMMANDS_TARGET/pm-skills:$skill.md"
-  if [ "$FORCE" = "true" ]; then
-    [ -e "$local_file" ] && CLAUDE_REMOVED="true"
-    rm -f "$local_file"
-  elif command_file_owned "$local_file"; then
-    rm -f "$local_file"
-    CLAUDE_REMOVED="true"
-  fi
-done
-if [ "$CLAUDE_REMOVED" = "true" ]; then
-  echo "Removed pm-skills from Claude Code"
-  REMOVED_ANY="true"
-else
-  echo "pm-skills not found in Claude Code"
-fi
-
-print_section "Codex"
-if [ "$FORCE" = "true" ] && [ -e "$CODEX_TARGET" ]; then
-  rm -rf "$CODEX_TARGET"
-  echo "Removed pm-skills from Codex at $(display_path "$CODEX_TARGET")"
-  REMOVED_ANY="true"
-elif [ -L "$CODEX_TARGET" ]; then
-  rm "$CODEX_TARGET"
-  echo "Removed pm-skills from Codex at $(display_path "$CODEX_TARGET")"
-  REMOVED_ANY="true"
-else
-  echo "pm-skills not found in Codex"
-fi
-
-print_section "Profile"
-if [ -f "$PROFILE_PATH" ]; then
-  if [ "$FORCE" = "true" ]; then
-    rm "$PROFILE_PATH"
-    echo "Removed pm-skills profile at $(display_path "$PROFILE_PATH")"
-    REMOVED_ANY="true"
+canonical_path() {
+  local path="$1"
+  if [ -d "$path" ]; then
+    (cd "$path" && pwd -P)
   else
-    read -r -p "Delete $(display_path "$PROFILE_PATH")? [y/N]: " CONFIRM || exit 130
-    if [[ "$CONFIRM" =~ ^[Yy] ]]; then
-      rm "$PROFILE_PATH"
-      echo "Removed pm-skills profile at $(display_path "$PROFILE_PATH")"
-      REMOVED_ANY="true"
+    (cd "$(dirname "$path")" && printf '%s/%s\n' "$(pwd -P)" "$(basename "$path")")
+  fi
+}
+
+resolve_link_target() {
+  local link_path="$1" raw_target="" combined_path=""
+  raw_target="$(readlink "$link_path")" || return 1
+  if [[ "$raw_target" = /* ]]; then
+    if [ -e "$raw_target" ]; then
+      canonical_path "$raw_target"
     else
-      echo "Kept pm-skills profile at $(display_path "$PROFILE_PATH")"
+      printf '%s\n' "$raw_target"
+    fi
+  else
+    combined_path="$(cd "$(dirname "$link_path")" && pwd -P)/$raw_target"
+    if [ -e "$combined_path" ]; then
+      canonical_path "$combined_path"
+    else
+      printf '%s\n' "$combined_path"
     fi
   fi
-else
-  echo "pm-skills profile not found at $(display_path "$PROFILE_PATH")"
-fi
+}
 
-print_section "Done"
-if [ "$REMOVED_ANY" = "true" ]; then
-  echo "pm-skills uninstall completed"
-else
-  echo "Nothing to remove"
-fi
+is_managed_command_file() {
+  if [ ! -f "$1" ]; then
+    return 1
+  fi
+
+  if grep -Fxq "$MANAGED_COMMENT" "$1"; then
+    return 0
+  fi
+
+  grep -Fxq "$LEGACY_MANAGED_COMMENT" "$1" && is_legacy_repo_command_file "$1"
+}
+
+is_owned_command_target() {
+  local path="$1" filename="$2"
+  [ "$path" = "$REPO_DIR/adapters/claude/commands/$filename" ]
+}
+
+is_owned_skill_target() {
+  local path="$1" skill="$2"
+  case "$path" in
+    "$REPO_DIR/skills/$skill") return 0 ;;
+    "$REPO_DIR/adapters/claude/skills/$skill") return 0 ;;
+    "$REPO_DIR/plugins/pm-skills/skills/$skill") return 0 ;;
+    "$REPO_DIR/adapters/codex/pm-skills/$skill") return 0 ;;
+    *) return 1 ;;
+  esac
+}
+
+remove_legacy_codex_namespace_if_owned() {
+  local current_target=""
+  if [ -L "$LEGACY_CODEX_NAMESPACE" ]; then
+    current_target="$(resolve_link_target "$LEGACY_CODEX_NAMESPACE")"
+    case "$current_target" in
+      "$REPO_DIR/adapters/codex/pm-skills")
+        rm "$LEGACY_CODEX_NAMESPACE"
+        add_removed_line "  OK   $(display_path "$LEGACY_CODEX_NAMESPACE")"
+        ;;
+    esac
+  fi
+}
+
+remove_legacy_claude_plugin_if_present() {
+  if ! command -v claude >/dev/null 2>&1; then
+    return
+  fi
+
+  if claude plugin list 2>/dev/null | grep -q "^$LEGACY_CLAUDE_PLUGIN_NAME "; then
+    claude plugin uninstall "$LEGACY_CLAUDE_PLUGIN_NAME" >/dev/null 2>&1 || true
+    claude plugin marketplace remove "$LEGACY_CLAUDE_PLUGIN_NAME" >/dev/null 2>&1 || true
+    add_removed_line "  OK   legacy Claude plugin $LEGACY_CLAUDE_PLUGIN_NAME"
+  fi
+}
+
+is_legacy_repo_command_file() {
+  local path="$1" base_name="" skill=""
+  base_name="$(basename "$path")"
+
+  if [ "$base_name" = "pm-skills.md" ]; then
+    grep -Fq 'Browse the installed pm-skills commands.' "$path" ||
+      grep -Fq 'Use the `pm-skills` skill for this request.' "$path" ||
+      grep -Fq 'Route this request to one of these installed skills' "$path"
+    return
+  fi
+
+  case "$base_name" in
+    pm-skills:*.md)
+      skill="${base_name#pm-skills:}"
+      skill="${skill%.md}"
+      grep -Fq "Use the installed \`pm-skills-$skill\` skill for this request." "$path" ||
+        grep -Fq "Use the \`$skill\` workflow for this request." "$path"
+      ;;
+    *)
+      return 1
+      ;;
+  esac
+}
+
+remove_command() {
+  local path="$1" current_target=""
+  if [ -f "$path" ] && is_managed_command_file "$path"; then
+    rm "$path"
+    add_removed_line "  OK   $(display_path "$path")"
+  elif [ -L "$path" ]; then
+    current_target="$(resolve_link_target "$path")"
+    if is_owned_command_target "$current_target" "$(basename "$path")"; then
+      rm "$path"
+      add_removed_line "  OK   $(display_path "$path")"
+    fi
+  fi
+}
+
+remove_skill_link() {
+  local path="$1" skill_name="" current_target=""
+  case "$path" in
+    */pm-skills:*)
+      skill_name="${path##*/pm-skills:}"
+      ;;
+    */pm-skills-*)
+      skill_name="${path##*/pm-skills-}"
+      ;;
+    *)
+      return
+      ;;
+  esac
+  if [ -L "$path" ]; then
+    current_target="$(resolve_link_target "$path")"
+    if is_owned_skill_target "$current_target" "$skill_name"; then
+      rm "$path"
+      add_removed_line "  OK   $(display_path "$path")"
+    fi
+  fi
+}
+
+remove_local_configs() {
+  local reply="" removed_any="false"
+
+  if [ ! -f "$PRIMARY_CONFIG_PATH" ] && [ ! -f "$FALLBACK_CONFIG_PATH" ] && [ ! -f "$LEGACY_CONFIG_PATH" ] && [ ! -f "$LEGACY_CLAUDE_PROFILE_PATH" ]; then
+    return
+  fi
+
+  read -r -p "Remove local config too? [y/N]: " reply || exit 130
+  if [[ ! "$reply" =~ ^[Yy] ]]; then
+    add_config_line "  Kept local config files"
+    return
+  fi
+
+  for path in "$PRIMARY_CONFIG_PATH" "$FALLBACK_CONFIG_PATH" "$LEGACY_CONFIG_PATH" "$LEGACY_CLAUDE_PROFILE_PATH"; do
+    if [ -f "$path" ]; then
+      rm "$path"
+      add_config_line "  OK   $(display_path "$path")"
+      removed_any="true"
+    fi
+  done
+
+  if [ "$removed_any" = "true" ]; then
+    rmdir "$(dirname "$PRIMARY_CONFIG_PATH")" 2>/dev/null || true
+    rmdir "$(dirname "$FALLBACK_CONFIG_PATH")" 2>/dev/null || true
+  fi
+}
+
+main() {
+  local path=""
+
+  echo "pm-skills uninstall"
+  echo ""
+
+  while IFS= read -r path; do
+    remove_command "$path"
+  done < <(find "$CLAUDE_COMMANDS_TARGET" -maxdepth 1 \( -name 'pm-skills.md' -o -name 'pm-skills:*.md' \) 2>/dev/null | sort)
+
+  while IFS= read -r path; do
+    remove_skill_link "$path"
+  done < <(find "$CLAUDE_SKILLS_TARGET" -maxdepth 1 -type l \( -name 'pm-skills:*' -o -name 'pm-skills-*' \) 2>/dev/null | sort)
+
+  while IFS= read -r path; do
+    remove_skill_link "$path"
+  done < <(find "$CODEX_SKILLS_TARGET" -maxdepth 1 -type l \( -name 'pm-skills:*' -o -name 'pm-skills-*' \) 2>/dev/null | sort)
+
+  remove_legacy_codex_namespace_if_owned
+  remove_legacy_claude_plugin_if_present
+  remove_local_configs
+
+  echo "Removed"
+  if [ "${#REMOVED_LINES[@]}" -gt 0 ]; then
+    printf '%s\n' "${REMOVED_LINES[@]}"
+  else
+    echo "  None found"
+  fi
+
+  if [ "${#CONFIG_LINES[@]}" -gt 0 ]; then
+    echo ""
+    echo "Config"
+    printf '%s\n' "${CONFIG_LINES[@]}"
+  fi
+}
+
+main

@@ -1,1 +1,0 @@
-../../../../plugins/pm-skills/skills/slack-recap/instructions.md

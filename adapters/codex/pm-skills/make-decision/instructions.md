@@ -1,1 +1,0 @@
-../../../../plugins/pm-skills/skills/make-decision/instructions.md

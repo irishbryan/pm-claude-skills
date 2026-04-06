@@ -1,1 +1,0 @@
-../../../../plugins/pm-skills/skills/team-status/templates/team-status-template.md
