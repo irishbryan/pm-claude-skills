@@ -4,6 +4,7 @@ Essential product management skills anyone can use. Get help making decisions, s
 
 | Skill | Problem it solves |
 |---|---|
+| `estimate-timeline` | Helps create a timeline estimate with a launch date and dated milestones. |
 | `make-decision` | Turns a fuzzy tradeoff into a concrete decision memo with a recommendation. |
 | `shape-product-pitch` | Turns a rough product idea into a clearer pitch with scope, rationale, and constraints. |
 | `my-status` | Turns recent work into a concise personal update you can paste into Slack, docs, or leadership updates. |
