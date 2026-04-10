@@ -42,6 +42,7 @@ Help a PM turn a vague idea into a strong pitch with a clear problem, proposed s
   - `## Out of Scope`
 - `The Solution` must include constraints and appetite.
 - Every list item must start with a bold, concrete first sentence on the same line as the supporting detail.
+- Use numbered lists.
 - Keep the full pitch to 500 words or less.
 - If no meaningful urgency exists, say so directly.
 - Never invent facts the user did not provide.

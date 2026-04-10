@@ -4,9 +4,9 @@
 
 ## The Problem
 
-- **New users hit too many setup dead ends in the first session.** They have to piece together guidance from email, docs, and the app itself.
-- **The current flow makes the first success hard to reach quickly.** Support can recover some users manually, but the product path is weak on its own.
-- **The status quo keeps activation lower than it should be.** We are spending support effort where product clarity should be doing the work.
+1. **New users hit too many setup dead ends in the first session.** They have to piece together guidance from email, docs, and the app itself.
+2. **The current flow makes the first success hard to reach quickly.** Support can recover some users manually, but the product path is weak on its own.
+3. **The status quo keeps activation lower than it should be.** We are spending support effort where product clarity should be doing the work.
 
 The problem appears early and repeatedly for self-serve users evaluating the product on their own.
 
@@ -34,5 +34,5 @@ The problem appears early and repeatedly for self-serve users evaluating the pro
 
 ## Out of Scope
 
-- **A complete redesign of onboarding.** That would exceed the appetite for this cycle.
-- **Lifecycle email strategy changes.** This pitch focuses on the in-product path only.
+1. **A complete redesign of onboarding.** That would exceed the appetite for this cycle.
+2. **Lifecycle email strategy changes.** This pitch focuses on the in-product path only.

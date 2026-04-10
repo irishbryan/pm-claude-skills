@@ -7,5 +7,5 @@
 2. **The billing migration still has unresolved vendor risk.** Legal review timing is the main uncertainty and could move the decision out a cycle.
 
 **Action Items:**
-- **Bryan will post the onboarding launch plan.** Share owners, dates, and support coverage by Thursday.
-- **Nina will confirm the vendor review timeline.** Bring back a date or a blocker by next Monday.
+1. **Bryan will post the onboarding launch plan.** Share owners, dates, and support coverage by Thursday.
+2. **Nina will confirm the vendor review timeline.** Bring back a date or a blocker by next Monday.

@@ -33,7 +33,7 @@ Pull the highest-signal takeaways out of recent meetings so a PM can quickly sha
 - Do not include Granola citation links.
 - Keep the output brief, high-signal, and Slack-ready.
 - Title line first.
-- Use numbered discussion points and bullet action items.
+- Use numbered discussion points and numbered action items.
 - Start each list item with a bold, concrete first sentence on the same line as the supporting detail.
 - Keep the full answer to 150 words or less.
 - Do not add extra sections.

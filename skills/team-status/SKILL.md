@@ -37,7 +37,7 @@ Help a PM produce a concise team-wide status update that is useful for leadershi
   - `## In Progress`
   - `## Blocked / At Risk`
   - `## Key Upcoming Dates`
-- Use bullets, not numbered lists.
+- Use numbered lists.
 - Start each item with a bold, concrete first sentence on the same line as the supporting detail.
 - Link project names when possible.
 - Keep the full answer to 300 words or less.
