@@ -1,16 +1,21 @@
+```
+╭────────────────────────────╮
+│         pm-skills          │
+╰────────────────────────────╯
+```
+
 Essential product management skills anyone can use. Get help making decisions, shaping products, writing status updates, summarizing meetings, and more.
 
 ## Skills
 
-| Skill | Problem it solves |
-|---|---|
-| `estimate-timeline` | Helps create a timeline estimate with a launch date and dated milestones. |
-| `make-decision` | Turns a fuzzy tradeoff into a concrete decision memo with a recommendation. |
-| `shape-product-pitch` | Turns a rough product idea into a clearer pitch with scope, rationale, and constraints. |
-| `my-status` | Turns recent work into a concise personal update you can paste into Slack, docs, or leadership updates. |
-| `team-status` | Summarizes what a team shipped, what is in flight, and where risks or blockers are building. |
-| `meeting-digest` | Pulls the signal out of recent meetings and turns it into decisions, takeaways, and action items. |
-| `slack-recap` | Helps you catch up on Slack and focus on the threads that actually need attention. |
+- `create-issue`: Turn a rough task into a well-shaped issue anyone can pick up and execute.
+- `estimate-timeline`: Create a timeline estimate with a launch date and dated milestones.
+- `make-decision`: Turn a fuzzy tradeoff into a concrete decision memo with a recommendation.
+- `shape-product-pitch`: Turn a rough product idea into a shaped pitch with scope, rationale, and constraints.
+- `my-status`: Draft a concise personal status update from recent work.
+- `team-status`: Summarize shipped work, in-flight work, and risks for a team.
+- `meeting-digest`: Pull decisions, takeaways, and action items out of recent meetings.
+- `slack-recap`: Catch up on Slack and focus on the threads that need attention.
 
 ## Quick Start
 

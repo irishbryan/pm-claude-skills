@@ -227,29 +227,57 @@ sync_skill_link() {
 main() {
   local config_file="" name="" email="" role="" team="" company="" product_area="" manager_name="" timezone="" skill="" claude_skill_status="" codex_skill_status="" status=""
 
+  echo '╭────────────────────────────╮'
+  echo '│         pm-skills          │'
+  echo '╰────────────────────────────╯'
+  echo ""
+
   config_file="$(config_path)"
 
-  echo "pm-skills setup"
-  echo ""
-  echo "To personalize experience, provide the following information."
-  echo ""
-
-  name="$(prompt_with_default "Your name (optional)" "$(config_value "$config_file" name)")"
-  email="$(prompt_with_default "Your work email (optional)" "$(config_value "$config_file" email)")"
-  team="$(prompt_with_default "Your team name (optional)" "$(config_value "$config_file" team)")"
-  role="$(config_value "$config_file" role)"
-  company="$(config_value "$config_file" company)"
-  product_area="$(config_value "$config_file" product_area)"
-  manager_name="$(config_value "$config_file" manager_name)"
-  timezone="$(config_value "$config_file" timezone)"
-
-  write_config "$config_file" "$name" "$email" "$role" "$team" "$company" "$product_area" "$manager_name" "$timezone"
+  if [ -f "$config_file" ]; then
+    echo "Personal context ($(display_path "$config_file"))"
+    name="$(config_value "$config_file" name)"
+    email="$(config_value "$config_file" email)"
+    role="$(config_value "$config_file" role)"
+    team="$(config_value "$config_file" team)"
+    company="$(config_value "$config_file" company)"
+    product_area="$(config_value "$config_file" product_area)"
+    manager_name="$(config_value "$config_file" manager_name)"
+    timezone="$(config_value "$config_file" timezone)"
+    [ -n "$name" ] && printf '  name:         %s\n' "$name"
+    [ -n "$email" ] && printf '  email:        %s\n' "$email"
+    [ -n "$role" ] && printf '  role:         %s\n' "$role"
+    [ -n "$team" ] && printf '  team:         %s\n' "$team"
+    [ -n "$company" ] && printf '  company:      %s\n' "$company"
+    [ -n "$product_area" ] && printf '  product_area: %s\n' "$product_area"
+    [ -n "$manager_name" ] && printf '  manager:      %s\n' "$manager_name"
+    [ -n "$timezone" ] && printf '  timezone:     %s\n' "$timezone"
+    echo ""
+    echo "  Edit $(display_path "$config_file") to update."
+    echo ""
+  else
+    echo "To personalize experience, provide the following information."
+    echo ""
+    name="$(prompt_with_default "Your name (optional)" "")"
+    email="$(prompt_with_default "Your work email (optional)" "")"
+    team="$(prompt_with_default "Your team name (optional)" "")"
+    role=""
+    company=""
+    product_area=""
+    manager_name=""
+    timezone=""
+    write_config "$config_file" "$name" "$email" "$role" "$team" "$company" "$product_area" "$manager_name" "$timezone"
+    echo ""
+    echo "Config saved"
+    echo "  $(display_path "$config_file")"
+    echo ""
+  fi
 
   mkdir -p "$CLAUDE_COMMANDS_TARGET" "$CLAUDE_SKILLS_TARGET" "$CODEX_SKILLS_TARGET"
   remove_legacy_codex_namespace_if_owned
   sync_claude_router
 
-  echo "Installed skills"
+  echo "Skills"
   while IFS= read -r skill; do
     cleanup_legacy_skill_link "$CLAUDE_SKILLS_TARGET" "$skill"
     cleanup_legacy_skill_link "$CODEX_SKILLS_TARGET" "$skill"
@@ -267,15 +295,11 @@ main() {
   done < <(skill_names)
 
   echo ""
-  echo "Config saved"
-  echo "  $(display_path "$config_file")"
-  echo ""
   echo "Next"
   echo "  Claude Code: /pm-skills:my-status"
   echo "  Codex:       \$pm-skills:my-status"
   echo ""
   echo "Tip"
-  echo "  Edit $(display_path "$config_file") to update in the future."
   echo "  Connect MCPs like Linear, Slack, and Granola for better results."
 }
 

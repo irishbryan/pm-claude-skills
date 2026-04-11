@@ -204,7 +204,9 @@ remove_local_configs() {
 main() {
   local path=""
 
-  echo "pm-skills uninstall"
+  echo '╭────────────────────────────╮'
+  echo '│         pm-skills          │'
+  echo '╰────────────────────────────╯'
   echo ""
 
   while IFS= read -r path; do
