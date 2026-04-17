@@ -32,11 +32,16 @@ Pull the highest-signal takeaways out of recent meetings so a PM can quickly sha
 - Never invent attendees, decisions, or action items.
 - Do not include Granola citation links.
 - Keep the output brief, high-signal, and Slack-ready.
-- Title line first.
-- Use numbered discussion points and numbered action items.
+- Follow this output shape exactly:
+  - `# {Meeting Title}`
+  - `**tl;dr:** ...`
+  - `**Key Discussion Points:**`
+  - `**Action Items:**`
+- Use numbered lists under both sections.
+- Up to 3 discussion points. Action items must have clear owners.
 - Start each list item with a bold, concrete first sentence on the same line as the supporting detail.
 - Keep the full answer to 150 words or less.
-- Do not add extra sections.
+- Do not add extra sections beyond these four elements.
 
 # Output
 
