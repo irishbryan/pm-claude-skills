@@ -1,6 +1,6 @@
 ---
 name: pm-skills:make-decision
-description: Turn a fuzzy tradeoff into a concrete decision memo.
+description: Create a concise decision memo for tradeoffs, recommendations, pros and cons, scope choices, strategy questions, or should-we-do-X decisions.
 ---
 
 # Purpose

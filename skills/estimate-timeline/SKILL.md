@@ -1,6 +1,6 @@
 ---
 name: pm-skills:estimate-timeline
-description: Help a team create a timeline estimate with a launch date, dated milestones, and variable scope.
+description: Create a launch timeline estimate for project planning, fixed dates, milestones, rollout checkpoints, scope cuts, or date tradeoffs.
 ---
 
 # Purpose

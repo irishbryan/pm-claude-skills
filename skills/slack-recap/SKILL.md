@@ -1,6 +1,6 @@
 ---
 name: pm-skills:slack-recap
-description: Prioritize the Slack messages that need attention.
+description: Prioritize Slack catch-up into urgent items, action needed, review threads, and FYIs after PTO, deep work, or missed messages.
 ---
 
 # Purpose

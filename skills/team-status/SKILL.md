@@ -1,6 +1,6 @@
 ---
 name: pm-skills:team-status
-description: Summarize shipped work, in-flight work, and risks for a team.
+description: Draft a team status update with shipped work, in-flight work, risks, blockers, upcoming dates, and leadership-ready summary.
 ---
 
 # Purpose

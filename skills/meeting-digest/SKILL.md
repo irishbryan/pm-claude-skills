@@ -1,6 +1,6 @@
 ---
 name: pm-skills:meeting-digest
-description: Summarize recent meetings and extract decisions and action items.
+description: Summarize meeting notes into a brief digest with decisions, discussion context, action items, owners, and open questions.
 ---
 
 # Purpose

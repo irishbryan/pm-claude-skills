@@ -1,6 +1,6 @@
 ---
 name: pm-skills:create-issue
-description: Turn a rough task into a well-shaped issue anyone can pick up and execute.
+description: Create a clear issue from a vague bug, task, feature request, or follow-up, with context, done criteria, scope, and next steps.
 ---
 
 # Purpose

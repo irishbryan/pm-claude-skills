@@ -1,6 +1,6 @@
 ---
 name: pm-skills:shape-product-pitch
-description: Turn a rough idea into a shaped product pitch.
+description: Shape a product idea into a concise pitch with problem, solution, appetite, constraints, success signals, risks, and out-of-scope items.
 ---
 
 # Purpose

@@ -1,6 +1,6 @@
 ---
 name: pm-skills:my-status
-description: Draft a concise personal status update from recent work.
+description: Draft a personal PM status update for weekly updates, 1:1 prep, leadership notes, progress, next steps, risks, and asks.
 ---
 
 # Purpose
