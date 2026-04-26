@@ -32,11 +32,9 @@ Help a PM produce a concise team-wide status update that is useful for leadershi
 - Never create or modify issues unless the user explicitly asks.
 - Never invent issue IDs, project names, dates, counts, or metrics.
 - Keep the output concise, scannable, and ready to paste into Slack.
-- Use these sections in this order only:
-  - `## Shipped`
-  - `## In Progress`
-  - `## Blocked / At Risk`
-  - `## Key Upcoming Dates`
+- Follow `examples/output.md` as the canonical output template.
+- Match its title format, section headings, numbered list style, and bold-first-sentence item pattern.
+- Use the example sections in that order only.
 - Use numbered lists.
 - Start each item with a bold, concrete first sentence on the same line as the supporting detail.
 - Link project names when possible.
@@ -49,4 +47,4 @@ A team update that highlights delivered work, active work, risks, and near-term 
 
 # Examples
 
-See `examples/output.md`.
+Use `examples/output.md` as the formatting source of truth.

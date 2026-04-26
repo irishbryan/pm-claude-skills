@@ -34,12 +34,8 @@ Help a PM catch up on Slack by separating urgent items from useful background no
 - Score messages into four sections: urgent, action needed, for review, and FYI.
 - Never invent messages, people, permalinks, or timestamps.
 - Keep the output scannable, prioritized, and Slack-ready.
-- Follow this output shape exactly:
-  - `# Slack Recap - {Period}`
-  - `## URGENT`
-  - `## ACTION NEEDED`
-  - `## FOR REVIEW`
-  - `## FYI`
+- Follow `examples/output.md` as the canonical output template.
+- Match its title format, section headings, numbered list style, and bold-first-sentence item pattern.
 - All four sections must be present.
 - Use numbered lists.
 - Start each item with a bold, concrete first sentence on the same line as the supporting detail.
@@ -53,4 +49,4 @@ A prioritized Slack recap grouped into urgent items, action items, review items,
 
 # Examples
 
-See `examples/output.md`.
+Use `examples/output.md` as the formatting source of truth.

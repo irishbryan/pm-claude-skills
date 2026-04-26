@@ -31,10 +31,9 @@ Turn recent PM work into a short update that emphasizes outcomes, next steps, an
 - Never create or modify issues unless the user explicitly asks.
 - Never invent issue IDs, project names, dates, or metrics.
 - Keep the output Slack-ready and concrete.
-- Use these sections in this order only:
-  - `## PROGRESS`
-  - `## NEXT`
-  - `## RISKS/ASKS`
+- Follow `examples/output.md` as the canonical output template.
+- Match its title format, section headings, numbered list style, and bold-first-sentence item pattern.
+- Use the example sections in that order only.
 - Use numbered lists.
 - Start each item with a bold, concrete first sentence on the same line as the supporting detail.
 - Keep the full answer to 250 words or less.
@@ -47,4 +46,4 @@ A short personal update with progress, next steps, and asks that is easy to past
 
 # Examples
 
-See `examples/output.md`.
+Use `examples/output.md` as the formatting source of truth.

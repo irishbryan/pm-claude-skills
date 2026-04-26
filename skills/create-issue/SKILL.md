@@ -36,13 +36,9 @@ Help a PM write a clear, self-contained issue that gives enough context for anyo
 - A suggested approach is a starting point, not a mandate. The person picking up the issue has creative freedom on implementation.
 - If the user has no suggested approach, omit the `Suggested Approach` section entirely.
 - If the user wants to fast-track, ask for the problem, why it matters, what done looks like, and what is out of scope.
-- Follow this output shape exactly:
-  - `# {Issue Title}`
-  - `> **tl;dr:** ...`
-  - `## The Problem`
-  - `## What Done Looks Like`
-  - `## Suggested Approach` (include only when the user provides one)
-  - `## Out of Scope`
+- Follow `examples/output.md` as the canonical output template.
+- Match its title format, `tl;dr` blockquote, section headings, numbered list style, and bold-first-sentence item pattern.
+- Include `Suggested Approach` only when the user provides one.
 - Every list item must start with a bold, concrete first sentence on the same line as the supporting detail.
 - Use numbered lists.
 - Keep the full issue to 300 words or less.
@@ -54,4 +50,4 @@ A shaped issue that is specific enough to file in a tracker and clear enough for
 
 # Examples
 
-See `examples/output.md`.
+Use `examples/output.md` as the formatting source of truth.
