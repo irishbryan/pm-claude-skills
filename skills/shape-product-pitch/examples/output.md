@@ -1,38 +1,38 @@
-# Improve Trial-to-Activation Handoff
+# Schedule Messages for Later
 
-> **tl;dr:** New self-serve users are falling out before they reach value because the handoff from signup to setup is fragmented. Tightening that path should improve activation without a full onboarding rewrite.
+> **tl;dr:** People sometimes know what they want to send before they know the right time to send it. Scheduled sending lets them compose a message now and deliver it later without relying on reminders or manual follow-up.
 
 ## The Problem
 
-1. **New users hit too many setup dead ends in the first session.** They have to piece together guidance from email, docs, and the app itself.
-2. **The current flow makes the first success hard to reach quickly.** Support can recover some users manually, but the product path is weak on its own.
-3. **The status quo keeps activation lower than it should be.** We are spending support effort where product clarity should be doing the work.
+1. **Users rely on memory to send later.** They draft notes, set separate reminders, or leave messages unsent until the right moment.
+2. **Manual follow-up creates avoidable misses.** Time-sensitive messages can be forgotten, sent late, or sent at inconvenient hours.
+3. **The workaround is outside the message flow.** Users have to coordinate between the messaging app, calendar, and reminder tools.
 
-The problem appears early and repeatedly for self-serve users evaluating the product on their own.
-
-**Why now:** The team already has activation work in flight, and this is the clearest bottleneck in the current cycle.
+**Why now:** Scheduling is a common expectation in communication tools, and it fits naturally into the existing compose flow.
 
 ## The Solution
 
-**Approach:** Ship a narrow onboarding improvement focused on the first critical setup step and clearer recovery paths when users get stuck.
+**Approach:** Add a lightweight scheduling option to the message composer.
 
-1. **Guide users through the first required setup action.** Reduce ambiguity and shorten the path to first value.
-2. **Add clearer recovery points when users fail.** Make the next step obvious instead of forcing users into docs or support.
-3. **Instrument the drop-off points before launch.** Make sure the team can tell whether the change worked.
+1. **Let users choose a send time before posting.** The scheduled message stays visible and editable until delivery.
+2. **Show scheduled messages in one predictable place.** Users can review, edit, send now, or cancel before the scheduled time.
+3. **Confirm delivery state clearly.** The app should make it obvious whether a message is scheduled, sent, failed, or canceled.
 
 **Constraints:**
 
-1. **This must fit inside the current cycle.** The team cannot absorb a full onboarding rewrite right now.
-2. **The work must reuse existing auth and setup primitives.** New platform work would expand scope too much.
-
-**Appetite:** 2-week batch.
+1. **Fit this into a small feature batch.** Keep the first version narrow enough to ship without platform-level changes.
+2. **Reuse existing composer patterns.** Avoid introducing a separate scheduling surface.
 
 ## What Success Looks Like
 
-1. **More trial users reach the first successful setup step.** The team can observe a better activation trend within the first week after launch.
-2. **Support sees fewer onboarding rescue requests.** The volume should drop for the failure modes this pitch targets.
+1. **Users schedule messages without leaving the composer.** The flow should feel like a small extension of sending, not a separate planning tool.
+2. **Scheduled messages are easy to manage.** Users can find and change pending messages without searching through threads.
+
+## Risks and Open Questions
+
+1. **Delivery failure behavior needs definition.** The team should decide how retries, offline states, and notification failures appear to users.
 
 ## Out of Scope
 
-1. **A complete redesign of onboarding.** That would exceed the appetite for this cycle.
-2. **Lifecycle email strategy changes.** This pitch focuses on the in-product path only.
+1. **Recurring scheduled messages are excluded.** Repetition adds complexity beyond the first version.
+2. **Campaign or bulk messaging is excluded.** This pitch is for individual user-composed messages only.
