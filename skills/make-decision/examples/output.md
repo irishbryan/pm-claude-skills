@@ -1,23 +1,23 @@
-# Decide Whether To Defer Billing Migration
+# Decide Whether To Build Scheduled Sending Now
 
-Decision: Should we move the billing migration into this cycle or defer it until next cycle?
+Decision: Should the team build scheduled message sending in the next feature batch or defer it?
 
 ## 1. Decision To Make
 
-Decide whether the team should spend this cycle on the billing migration now or defer it so the current activation work can ship cleanly.
+Use this worksheet to decide whether scheduled sending should enter the next feature batch or wait until the core messaging flow is more mature.
 
 ## 2. Background
 
-The migration has real long-term value, but the vendor contract and risk review are not settled yet. At the same time, the team already has a narrow activation opportunity that is better understood and closer to launch.
+Users sometimes want to write a message now and send it later, but the current product requires them to remember and come back manually. The feature is useful and easy to understand, but it adds delivery-state complexity that could distract from current reliability work.
 
 ## 3. Options
 
-| Criteria | Option 1: Do it now | Option 2: Defer one cycle |
+| Criteria | Option 1: Build scheduled sending now | Option 2: Defer scheduled sending |
 |:-|:-|:-|
-| Delivery confidence | :red_circle: Low. Contract and dependency timing are still unclear. | :green_circle: High. Keeps the current cycle focused and reduces execution risk. |
-| User impact this cycle | :yellow_circle: Medium. Some platform cleanup value but little immediate customer impact. | :green_circle: High. Keeps the team on the activation fix with faster customer payoff. |
-| Strategic cleanup | :green_circle: High. Removes a known long-term drag. | :yellow_circle: Medium. The cleanup still matters but slips by a cycle. |
+| Customer value | :green_circle: High. Gives users a clear new ability inside the existing message flow. | :yellow_circle: Medium. Avoids complexity, but leaves the current reminder-based workaround in place. |
+| Delivery confidence | :yellow_circle: Medium. The basic composer flow is straightforward, but failure states need definition. | :green_circle: High. Keeps the team focused on known messaging reliability work. |
+| Scope control | :yellow_circle: Medium. The first version can stay narrow if recurring and bulk sending are excluded. | :green_circle: High. Deferring removes the risk of scope expanding during the batch. |
 
 ## 4. Recommendation
 
-Defer the billing migration by one cycle. It wins on delivery confidence and near-term user impact, which matter more than cleanup value right now. The main downside is carrying the migration risk longer, so the team should use the next cycle to reduce the dependency uncertainty before revisiting the decision.
+Build scheduled sending now as a narrow first version. It has clear customer value and can stay contained if the team limits scope to one-time scheduled messages. The main risk is delivery-state complexity; this recommendation should change if the team cannot define failure, edit, and cancellation behavior before build starts.
