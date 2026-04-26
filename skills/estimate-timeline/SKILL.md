@@ -37,26 +37,21 @@ Help a PM run a short estimation workshop that results in a credible launch-orie
 - Ask one or two questions at a time.
 - Treat every estimate as imperfect. Speak in terms of the best current estimate, the main risks, and the likeliest scope cuts.
 - Use fixed time, variable scope. Protect the chosen launch date by moving work out of `Must` scope before moving the date.
-- Every project needs an MMDD shorthand tied to the launch date. Include it as `Project MMDD: {MMDD}` in the output, but do not append it to the project title unless the user asks.
+- Every project needs an MMDD shorthand tied to the launch date. Include it as `Project MMDD: {MMDD} ({Month Day})` in the output, but do not append it to the project title unless the user asks.
+- Pair MMDD dates with a human-readable month and day in parentheses in the final output to avoid regional date ambiguity.
 - If the team starts from a fixed launch date, work backward to the milestones.
 - If the team starts without a fixed launch date, sequence the milestones first, propose a launch date, and ask the user to confirm it before finalizing the output.
-- Push back on fuzzy scope, missing dependencies, unrealistic sequencing, and milestones that do not support the launch.
-- Prefer concrete milestones the team can aim at, especially rollout checkpoints when relevant.
-- If a date is proposed rather than committed, label it clearly as an estimate.
-- Follow this output shape exactly:
-  - `# {Project Name}`
-  - `> **tl;dr:** Launch date: {MMDD}. {2-3 sentence estimate summary with fixed-time, variable-scope framing.}`
-  - `## Estimate Summary`
-  - `## Milestones`
-  - `## Risks and Scope Tradeoffs`
-- Under `Estimate Summary`, use bullets only and include:
-  - `Project MMDD`
-  - `Planning mode`
-  - `Fixed time, variable scope`
-  - `Must-have scope`
-- Under `Milestones`, use bullets only.
-- Each milestone bullet must start with this pattern exactly: `**Milestone {n} ({Must|Should|Could}): {Name} on {MMDD}.**`
-- Under `Risks and Scope Tradeoffs`, use bullets only.
+- If the user wants to fast-track, ask for the project name, goal, launch mode, rough scope, must-have scope, constraints, dependencies, target date, and rollout expectations.
+- Push back on fuzzy scope, missing dependencies, unrealistic sequencing, missing rollout checkpoints, scope cuts that are too vague to act on, and milestones that do not support the launch.
+- Distinguish proposed launch dates from committed launch dates. If a date is proposed rather than committed, label it clearly as an estimate and ask for confirmation before final output.
+- Prefer concrete milestones the team can aim at, especially dependency deadlines and rollout checkpoints when relevant.
+- Follow `examples/output.md` as the canonical output template.
+- Match its title format, `tl;dr` blockquote, section headings, bullet style, milestone pattern, and bold-first-sentence item pattern.
+- Preserve these output sections:
+  - `Estimate Summary`
+  - `Milestones`
+  - `Risks and Scope Tradeoffs`
+- Keep confidence language lightweight in the `tl;dr` and risks. Do not add a separate confidence field.
 - Start each bullet with a bold, concrete first sentence on the same line as the supporting detail.
 - Keep the full output to 400 words or less.
 - Do not present the estimate as certain.
@@ -67,4 +62,4 @@ A concise estimate summary that includes a launch date, the project MMDD, dated 
 
 # Examples
 
-See `examples/output.md`.
+Use `examples/output.md` as the formatting source of truth.
