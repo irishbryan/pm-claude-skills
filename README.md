@@ -10,6 +10,7 @@ Essential product management skills anyone can use. Get help making decisions, s
 
 - `create-issue`: Turn a rough task into a well-shaped issue anyone can pick up and execute.
 - `estimate-timeline`: Create a timeline estimate with a launch date and dated milestones.
+- `triage-feedback`: Audit feedback from sources like Slack, meetings, docs, or support notes against an issue tracker.
 - `make-decision`: Turn a fuzzy tradeoff into a concrete decision memo with a recommendation.
 - `shape-product-pitch`: Turn a rough product idea into a shaped pitch with scope, rationale, and constraints.
 - `my-status`: Draft a concise personal status update from recent work.
