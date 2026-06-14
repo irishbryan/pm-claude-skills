@@ -17,14 +17,15 @@ Help a PM catch up on Slack by separating urgent items from useful background no
 
 - Optional time period
 - Optional channels, people, or topics to prioritize
-- Optional local config from `~/.config/pm-skills/config.yml` or `~/.pm-skills/config.yml`
+- Optional source material, such as pasted threads, message exports, or channel summaries
+- Local context from `~/.config/pm-skills/config.yml` or `~/.pm-skills/config.yml` when available
 
 # Instructions
 
-- Treat local config as optional context. Use it to understand likely channels, role, and timezone if present.
+- Use local context only for defaults like role, team, product area, and timezone. Do not treat it as message evidence.
 - Default to the last 7 days unless the user specifies otherwise.
-- Required tool: Slack.
-- If Slack is unavailable, say: `Slack is not connected for pm-skills in this agent yet. Connect it, then rerun pm-skills:slack-recap.`
+- Preferred tool: Slack.
+- Use Slack when connected; otherwise ask the user to paste or export the relevant messages.
 - Use multiple searches to gather high-signal messages:
   - mentions of the user
   - urgency keywords
@@ -36,16 +37,16 @@ Help a PM catch up on Slack by separating urgent items from useful background no
 - Keep the output scannable, prioritized, and Slack-ready.
 - Follow `examples/output.md` as the canonical output template.
 - Match its title format, section headings, numbered list style, and bold-first-sentence item pattern.
-- All four sections must be present.
+- Include only sections with useful items.
 - Use numbered lists.
 - Start each item with a bold, concrete first sentence on the same line as the supporting detail.
 - Max 5 items per section.
 - Keep the full answer to 300 words or less.
-- Write `None found` for empty sections.
+- If nothing actionable is found, say so briefly instead of adding empty sections.
 
 # Output
 
-A prioritized Slack recap grouped into urgent items, action items, review items, and FYIs.
+A prioritized Slack recap grouped by the useful sections found: urgent items, action items, review items, and FYIs.
 
 # Examples
 

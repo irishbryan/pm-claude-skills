@@ -17,13 +17,14 @@ Pull the highest-signal takeaways out of recent meetings so a PM can quickly sha
 
 - Optional topic or date range
 - Optional meeting title or project scope
-- Optional local config from `~/.config/pm-skills/config.yml` or `~/.pm-skills/config.yml`
+- Optional source material, such as pasted notes, transcript excerpts, or meeting summaries
+- Local context from `~/.config/pm-skills/config.yml` or `~/.pm-skills/config.yml` when available
 
 # Instructions
 
-- Treat local config as optional context only.
-- Required tool: Granola.
-- If Granola is unavailable, say: `Granola is not connected for pm-skills in this agent yet. Connect it, then rerun pm-skills:meeting-digest.`
+- Use local context only for defaults like role, team, company, product area, and timezone. Do not treat it as meeting evidence.
+- Preferred tool: Granola.
+- Use Granola when connected; otherwise ask the user to paste meeting notes or a transcript excerpt.
 - Use the user input as a topic, date, or meeting filter when provided.
 - If the user gives an exact title or narrow filter, digest that meeting.
 - If multiple plausible meetings match, ask the user to narrow before summarizing.

@@ -10,7 +10,7 @@ Help a PM turn a vague idea into a strong pitch with a clear problem, proposed s
 # When to use
 
 - Before betting or prioritization
-- When framing a new initiative
+- After the problem is framed and a direction needs pitching
 - When pressure-testing whether an idea is worth shaping
 
 # Inputs
@@ -22,11 +22,11 @@ Help a PM turn a vague idea into a strong pitch with a clear problem, proposed s
 - Appetite, constraints, or desired scope
 - Success signal
 - Out-of-scope items
-- Optional local config from `~/.config/pm-skills/config.yml` or `~/.pm-skills/config.yml`
+- Local context from `~/.config/pm-skills/config.yml` or `~/.pm-skills/config.yml` when available
 
 # Instructions
 
-- Treat local config as optional context only.
+- Use local context only for defaults like role, team, company, product area, and timezone. Do not treat it as customer evidence or product strategy.
 - This skill is conversational. Do not jump straight to a finished pitch unless the user explicitly asks to fast-track.
 - No tools are required.
 - Run a short interview in four phases:

@@ -21,11 +21,11 @@ Help a PM run a short estimation workshop that results in a credible launch-orie
 - Known constraints, dependencies, or deadlines
 - Optional launch target
 - Optional rollout expectations
-- Optional local config from `~/.config/pm-skills/config.yml` or `~/.pm-skills/config.yml`
+- Local context from `~/.config/pm-skills/config.yml` or `~/.pm-skills/config.yml` when available
 
 # Instructions
 
-- Treat local config as optional context only.
+- Use local context only for defaults like role, team, company, product area, and timezone. Do not treat it as scope, dependency, or date evidence.
 - This skill is conversational. Do not jump straight to the final estimate unless the user explicitly asks to fast-track.
 - No tools are required.
 - Start by asking whether the team is working backward from a fixed launch date or forward toward choosing one.

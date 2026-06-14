@@ -18,15 +18,16 @@ Turn recent PM work into a short update that emphasizes outcomes, next steps, an
 - Optional time period
 - Optional audience or format preference
 - Optional focus areas that matter most this week
-- Optional local config from `~/.config/pm-skills/config.yml` or `~/.pm-skills/config.yml`
+- Optional source material, such as pasted issues, project updates, meeting notes, or recent work summaries
+- Local context from `~/.config/pm-skills/config.yml` or `~/.pm-skills/config.yml` when available
 
 # Instructions
 
-- Treat local config as optional context. Use it to understand role, team, company, and timezone, but do not block if it is missing.
+- Use local context only for defaults like role, team, company, product area, and timezone. Do not treat it as work evidence.
 - Default to the last 7 days unless the user asks for a different period.
-- Required tool: Linear. Optional tool: Granola.
-- If Linear is unavailable, say: `Linear is not connected for pm-skills in this agent yet. Connect it, then rerun pm-skills:my-status.`
-- Use Granola only to add strategic context such as decisions, blockers, or milestones.
+- Preferred tool: Linear. Optional tool: Granola.
+- Use connected tools when available; otherwise ask the user to paste or summarize recent work.
+- Use Granola only when available to add strategic context such as decisions, blockers, or milestones.
 - Cast a wide net for PM work: assigned issues, created issues, project work, coordination work, and follow-through.
 - Never create or modify issues unless the user explicitly asks.
 - Never invent issue IDs, project names, dates, or metrics.

@@ -19,11 +19,11 @@ Help a PM write a clear, self-contained issue that gives enough context for anyo
 - The problem or task
 - Why it matters now
 - Optional suggested approach
-- Optional local config from `~/.config/pm-skills/config.yml` or `~/.pm-skills/config.yml`
+- Local context from `~/.config/pm-skills/config.yml` or `~/.pm-skills/config.yml` when available
 
 # Instructions
 
-- Treat local config as optional context only.
+- Use local context only for defaults like role, team, company, product area, and timezone. Do not treat it as task evidence or a replacement for asking the user.
 - This skill is conversational. Do not jump straight to the final issue unless the user explicitly asks to fast-track.
 - Optional tool: Linear. If Linear is available, offer to create the issue after the user approves the draft.
 - Run a short interview in four phases:

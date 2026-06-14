@@ -19,15 +19,16 @@ Help a PM produce a concise team-wide status update that is useful for leadershi
 - Optional time period
 - Optional team scope
 - Optional audience or level of detail
-- Optional local config from `~/.config/pm-skills/config.yml` or `~/.pm-skills/config.yml`
+- Optional source material, such as pasted issues, project updates, meeting notes, or team summaries
+- Local context from `~/.config/pm-skills/config.yml` or `~/.pm-skills/config.yml` when available
 
 # Instructions
 
-- Treat local config as optional context. Use the role, team, company, and timezone if present.
+- Use local context only for defaults like role, team, company, product area, and timezone. Do not treat it as work evidence.
 - Default to the last 7 days unless the user specifies otherwise.
-- Required tool: Linear. Optional tools: Granola and Notion.
-- If Linear is unavailable, say: `Linear is not connected for pm-skills in this agent yet. Connect it, then rerun pm-skills:team-status.`
-- Use Granola and Notion only to add useful context such as milestones, risks, decisions, or metrics.
+- Preferred tool: Linear. Optional tools: Granola and Notion.
+- Use connected tools when available; otherwise ask the user to paste or summarize team work.
+- Use Granola and Notion only when available to add useful context such as milestones, risks, decisions, or metrics.
 - Use the configured team when present. If no team is configured, infer the most relevant scope from the available work.
 - Never create or modify issues unless the user explicitly asks.
 - Never invent issue IDs, project names, dates, counts, or metrics.

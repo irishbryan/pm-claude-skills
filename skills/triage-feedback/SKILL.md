@@ -18,20 +18,21 @@ Help a PM find product feedback from a specific source, check whether it is trac
 
 - Required: feedback source location, such as Slack channels, meeting notes, docs, support notes, or another connected source
 - Required: topic, product area, customer, keyword, or audit goal
+- Optional: pasted or exported source material when the source tool is unavailable
 - Optional: tracker or planning system, such as Linear
 - Optional: tracker team or project
 - Optional: time period, defaulting to the last 7 days
-- Optional: local config from `~/.config/pm-skills/config.yml` or `~/.pm-skills/config.yml`
+- Local context from `~/.config/pm-skills/config.yml` or `~/.pm-skills/config.yml` when available
 
 # Instructions
 
-- Treat local config as optional context. Use it to understand likely role, team, product area, and timezone if present.
+- Use local context only for defaults like role, team, product area, and timezone. Do not treat it as feedback evidence.
 - If the user does not specify where to search, ask for the feedback source before searching.
 - Do not broadly search every connected source unless the user explicitly asks for a broad audit.
 - Use the connected tool that matches the requested source and tracker.
 - Slack and Linear are common examples, not requirements.
-- If the requested source tool is unavailable, say which source is not connected and ask the user to connect it or choose another source.
-- If the user asks for tracking coverage but does not name a tracker, infer from local config or connected issue-tracking tools. If still unclear, ask which tracker to check.
+- If the requested source tool is unavailable, ask the user to paste or export the source material, connect the tool, or choose another source.
+- If the user asks for tracking coverage but does not name a tracker, infer from local context or connected issue-tracking tools. If still unclear, ask which tracker to check.
 - If the requested tracker is unavailable, still produce the source inventory and mark tracking status as `Not checked`.
 - Default to the last 7 days unless the user specifies otherwise.
 - Search the source with exact terms, semantic variants, and related wording.
@@ -52,7 +53,8 @@ Help a PM find product feedback from a specific source, check whether it is trac
 - If more findings exist, mention the overflow count in the `tl;dr`.
 - Include `Not checked` in the `tl;dr` only when one or more rows were not checked against a tracker.
 - If there are no untracked items, replace the issue-creation prompt with a brief note that no new issues are needed.
-- After presenting the report, offer to create issues for untracked items.
+- After presenting the report, offer to create issues for untracked items only when a tracker tool is available.
+- If no tracker tool is available, offer to draft issue text for untracked items instead.
 - Create issues only after the user selects row numbers or says `all`.
 - If tracker, team, or project is unknown, ask before creating issues.
 - When creating issues, use the source link, source or reporter, date, type, and relevant context in the description.

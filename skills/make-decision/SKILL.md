@@ -21,11 +21,11 @@ Help a PM clarify a decision, pressure-test the real options, and produce a memo
 - Background and urgency
 - Viable options
 - Main criteria or constraints
-- Optional local config from `~/.config/pm-skills/config.yml` or `~/.pm-skills/config.yml`
+- Local context from `~/.config/pm-skills/config.yml` or `~/.pm-skills/config.yml` when available
 
 # Instructions
 
-- Treat local config as optional context only.
+- Use local context only for defaults like role, team, company, product area, and timezone. Do not treat it as decision evidence or stakeholder input.
 - This skill is conversational. Do not generate the final memo immediately unless the user explicitly asks to fast-track.
 - No tools are required.
 - Run a short interview in four phases:
