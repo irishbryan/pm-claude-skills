@@ -1,33 +1,31 @@
-# Frame Inbox Follow-Up Failures
+> tl;dr: Customers worry the hosted product creates lock-in because they cannot leave with complete project context without support. This creates support volume and trust risk; shape this problem next with a two-week appetite.
 
-> **tl;dr:** Account managers are missing important customer replies because they are buried in inbox noise, putting enterprise renewals and expansions at risk. Research this for one week before spending shaping time so we can confirm how often it happens and what it costs.
+Problem
 
-## Framed Problem
+Customers who want to stop using the hosted product cannot independently recover the data and code they need to continue elsewhere. They rely on manual support or incomplete table exports, which reinforces lock-in concerns.
 
-Account managers cannot reliably see which customer conversations need attention before they become overdue. Important replies compete with routine notifications until the account manager notices them manually.
+Impact
 
-## Users And Value
+Existing hosted customers are the main users. They need confidence they can leave even if the hosted product remains the best default offering.
 
-1. **Account managers are the main users.** They manage customer relationships where slow replies can damage trust.
-2. **Enterprise accounts carry the business risk.** Missed replies matter most when renewals or expansions are in play.
-3. **The workaround is manual.** Users rely on reminders, stars, and search to recover priority.
+Prospects are affected before adoption. Forum sentiment and perceived lock-in can make the hosted option feel risky before customers try it.
 
-## Why Now
+Support carries the operational cost. Support volume is high, with disconnect requests and migration questions shown as major drivers.
 
-1. **Inbox volume is rising.** Account teams report more routine updates between customer replies.
-2. **The value is retention protection.** Faster follow-up should reduce avoidable frustration in important accounts.
+Why Now
 
-## Recommendation
+The support signal is material. The provided support analysis shows disconnect and migration requests as major drivers.
 
-1. **Research first.** Confirm the frequency and cost of missed follow-ups before deciding next work.
-2. **Use a one-week appetite.** Review account examples, support notes, and renewal or escalation signals.
+The trust risk compounds. A missing exit path can make customers believe the product retains them through friction rather than product value.
 
-## Evidence Gaps
+Recommendation
 
-1. **Missed follow-up frequency is unmeasured.** Confirm how often replies are missed and whether misses cluster by customer type.
-2. **Revenue impact is still directional.** Verify whether slow replies correlate with escalations, churn risk, or expansion risk.
+Shape next. Use a two-week appetite to define the customer-portability problem and the bar for reducing support dependency and lock-in perception.
 
-## Out Of Scope
+Keep the goal narrow. The frame is about customer confidence, support dependency, and perceived lock-in, not choosing a migration destination.
 
-1. **Full inbox redesign is excluded.** This frame is about high-value customer follow-ups, not general inbox organization.
-2. **Workflow automation is excluded.** Broader routing may be useful later, but it is not required to validate this problem.
+Out Of Scope
+
+Destination-specific transfer is excluded. Supporting one destination's transfer logic implies that destination is the recommended path.
+
+Full migration tooling is excluded. This frame is about customer data and code access, not a managed migration product.
