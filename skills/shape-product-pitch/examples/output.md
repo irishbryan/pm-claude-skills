@@ -1,38 +1,38 @@
-# Schedule Messages for Later
+# Template Library for Team Workflows
 
-> **tl;dr:** People sometimes know what they want to send before they know the right time to send it. Scheduled sending lets them compose a message now and deliver it later without relying on reminders or manual follow-up.
+> **tl;dr:** Teams repeat the same setup work every time they start a project. A template library would let them start from proven workflows instead of rebuilding structure, permissions, and checklists from memory.
 
 ## The Problem
 
-1. **Users rely on memory to send later.** They draft notes, set separate reminders, or leave messages unsent until the right moment.
-2. **Manual follow-up creates avoidable misses.** Time-sensitive messages can be forgotten, sent late, or sent at inconvenient hours.
-3. **The workaround is outside the message flow.** Users have to coordinate between the messaging app, calendar, and reminder tools.
+1. **Teams rebuild common workflows repeatedly.** Project owners copy old projects, maintain setup docs, or recreate tasks and permissions by hand.
+2. **Manual setup creates inconsistent execution.** Important checklist items, ownership rules, and review steps vary across projects.
+3. **New teams miss proven patterns.** Good operating practices stay trapped in a few existing projects instead of becoming reusable defaults.
 
-**Why now:** Scheduling is a common expectation in communication tools, and it fits naturally into the existing compose flow.
+**Why now:** More customers are standardizing repeatable work across departments, and inconsistent setup is becoming a visible adoption drag.
 
 ## The Solution
 
-**Approach:** Add a lightweight scheduling option to the message composer.
+**Approach:** Add a curated template library for common team workflows.
 
-1. **Let users choose a send time before posting.** The scheduled message stays visible and editable until delivery.
-2. **Show scheduled messages in one predictable place.** Users can review, edit, send now, or cancel before the scheduled time.
-3. **Confirm delivery state clearly.** The app should make it obvious whether a message is scheduled, sent, failed, or canceled.
+1. **Let admins publish approved templates.** Teams can start new projects from vetted task structures, permissions, and default checklists.
+2. **Make templates easy to compare.** Users should see who owns a template, when it was updated, and what workflow it supports.
+3. **Preserve local editing after creation.** Starting from a template should speed setup without forcing every project to stay identical.
 
 **Constraints:**
 
-1. **Fit this into a small feature batch.** Keep the first version narrow enough to ship without platform-level changes.
-2. **Reuse existing composer patterns.** Avoid introducing a separate scheduling surface.
+1. **Fit into one planning cycle.** Start with project creation and avoid lifecycle management for the first version.
+2. **Use existing permission concepts.** Publishing and using templates should not require a new admin model.
 
 ## What Success Looks Like
 
-1. **Users schedule messages without leaving the composer.** The flow should feel like a small extension of sending, not a separate planning tool.
-2. **Scheduled messages are easy to manage.** Users can find and change pending messages without searching through threads.
+1. **Teams start faster from approved patterns.** New projects begin with the right structure, owners, and checklist items already in place.
+2. **Workflow quality becomes more consistent.** Teams rely less on copied projects and private setup docs.
 
 ## Risks and Open Questions
 
-1. **Delivery failure behavior needs definition.** The team should decide how retries, offline states, and notification failures appear to users.
+1. **Template ownership needs definition.** The team should decide who can publish, update, archive, and deprecate shared templates.
 
 ## Out of Scope
 
-1. **Recurring scheduled messages are excluded.** Repetition adds complexity beyond the first version.
-2. **Campaign or bulk messaging is excluded.** This pitch is for individual user-composed messages only.
+1. **Template marketplace is excluded.** The first version is for internal team reuse, not public distribution.
+2. **Automatic project governance is excluded.** Templates can seed structure but should not enforce ongoing policy.

@@ -41,8 +41,9 @@ Help a PM decide whether a request, complaint, or opportunity matters enough to 
 - Keep the output focused on defining the problem well enough that someone else can decide what to do next.
 - If fast-tracking, ask for the request, affected users, pain or workaround, evidence, business value, why now, appetite, constraints, and non-goals.
 - Follow `examples/output.md` as the canonical output template.
-- Match its `tl;dr` blockquote, plain section headings, concise paragraph style, and ordering. Do not add a title unless the user asks for one.
-- The `tl;dr` must include the problem, business value, and recommended next step in plain language.
+- Match its optional `Problem: ...` title, `tl;dr` blockquote, plain section headings, concise paragraph style, and ordering. Add the title only when the user provides one or asks for one.
+- The `tl;dr` must frame the problem and clarify why it matters in plain language. Include the affected value, risk, or user impact when known.
+- Do not include the recommended next step, appetite, or process recommendation in the `tl;dr`.
 - The `Problem` section must state only the problem in one short paragraph.
 - The `Impact` section must name affected users, the business value or risk, and the current workaround or operational cost when known.
 - The `Recommendation` section must start with exactly one of: `Shape next.`, `Research first.`, `Defer.`, or `Do not pursue.` The recommendation means the next product-management step, not a delivery commitment.

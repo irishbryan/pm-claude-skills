@@ -19,6 +19,7 @@ Help a PM turn a vague idea into a strong pitch with a clear problem, proposed s
 - Target user or customer segment
 - Why now
 - Proposed solution or direction
+- Additional background or reader context, only when needed to understand the pitch
 - Appetite, constraints, or desired scope
 - Success signal
 - Out-of-scope items
@@ -34,13 +35,16 @@ Help a PM turn a vague idea into a strong pitch with a clear problem, proposed s
   - test assumptions, customer value, and urgency
   - define success, appetite, constraints, and non-goals
   - propose the solution and pressure-test risks or open questions
+- Ask whether there is any additional background or context readers will need to understand the pitch.
 - Ask one or two questions at a time.
 - Push back on vague customer value, weak urgency, missing appetite, solution-first framing, and unbounded scope.
-- If the user wants to fast-track, ask for the target user, problem, why now, proposed solution, appetite, success signal, constraints, and out-of-scope items.
+- If the user wants to fast-track, ask for the target user, problem, why now, proposed solution, additional context, appetite, success signal, constraints, and out-of-scope items.
 - Follow `examples/output.md` as the canonical output template.
 - Match its title format, `tl;dr` blockquote, section headings, numbered list style, and bold-first-sentence item pattern.
 - `The Solution` must include a `**Constraints:**` list.
 - Treat appetite as a default constraint, not a separate section.
+- Include `## Additional Context` only when the user provides background that readers need before they can evaluate the pitch and it does not fit naturally in `The Problem`, `Why now`, `The Solution`, constraints, risks, or out-of-scope.
+- Omit `## Additional Context` for routine background, generic strategic claims, or context already covered elsewhere. Do not include the section just because the interview asked about it.
 - Include `## Risks and Open Questions` only when there are meaningful risks, unresolved dependencies, or validation gaps.
 - Every list item must start with a bold, concrete first sentence on the same line as the supporting detail.
 - Keep each bold first sentence concrete, standalone, and ideally under 10 words.

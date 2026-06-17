@@ -1,31 +1,33 @@
-> tl;dr: Customers worry the hosted product creates lock-in because they cannot leave with complete project context without support. This creates support volume and trust risk; shape this problem next with a two-week appetite.
+Problem: Trial admins cannot evaluate team permissions before purchase.
+
+> tl;dr: Trial admins cannot confirm whether role permissions match their team's governance needs before they buy. This creates trust and conversion risk because security-minded buyers have to rely on sales assurances instead of testing the controls themselves.
 
 Problem
 
-Customers who want to stop using the hosted product cannot independently recover the data and code they need to continue elsewhere. They rely on manual support or incomplete table exports, which reinforces lock-in concerns.
+Admins evaluating the product cannot inspect or test role permissions during trial. They have to ask sales or infer from docs, which makes permission fit uncertain before purchase.
 
 Impact
 
-Existing hosted customers are the main users. They need confidence they can leave even if the hosted product remains the best default offering.
+Security-conscious admins are the main users. They need confidence that team access controls match internal governance needs before they commit.
 
-Prospects are affected before adoption. Forum sentiment and perceived lock-in can make the hosted option feel risky before customers try it.
+Buying committees are affected before adoption. Permission uncertainty can slow approval or push teams toward tools where access behavior is easier to verify.
 
-Support carries the operational cost. Support volume is high, with disconnect requests and migration questions shown as major drivers.
+Sales and support carry the operational cost. They answer repeated access-control questions that prospects should be able to validate directly.
 
 Why Now
 
-The support signal is material. The provided support analysis shows disconnect and migration requests as major drivers.
+Larger teams are entering the pipeline. Permissions are becoming a buying criterion rather than an admin detail.
 
-The trust risk compounds. A missing exit path can make customers believe the product retains them through friction rather than product value.
+The evaluation gap compounds. Prospects who cannot test governance controls may assume the product is not mature enough for their team.
 
 Recommendation
 
-Shape next. Use a two-week appetite to define the customer-portability problem and the bar for reducing support dependency and lock-in perception.
+Research first. Validate which permission questions block purchase and what evidence buyers need before shaping a self-serve evaluation path.
 
-Keep the goal narrow. The frame is about customer confidence, support dependency, and perceived lock-in, not choosing a migration destination.
+Keep the goal narrow. The frame is about evaluation confidence and purchase friction, not redesigning the permission model.
 
 Out Of Scope
 
-Destination-specific transfer is excluded. Supporting one destination's transfer logic implies that destination is the recommended path.
+Full role redesign is excluded. This frame should not change permission semantics.
 
-Full migration tooling is excluded. This frame is about customer data and code access, not a managed migration product.
+Enterprise policy automation is excluded. The immediate problem is evaluation clarity, not compliance workflow.
