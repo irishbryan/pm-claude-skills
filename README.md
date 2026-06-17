@@ -8,6 +8,7 @@
 |---|---|
 | `frame-problem` | Getting from a vague request to a clear problem, business value, and next step. Inspired by [Framing](https://www.ryansinger.co/framing/) |
 | `shape-product-pitch` | Turning a framed problem and direction into a concise product pitch. Inspired by [Shape Up](https://basecamp.com/shapeup) |
+| `create-okr` | Creating, sharpening, grading, and target-setting concise OKRs. Inspired by [What Matters](https://www.whatmatters.com/) |
 | `create-issue` | Writing tracker-ready issues with context, done criteria, and scope |
 | `estimate-timeline` | Creating launch estimates with milestones, risks, and scope tradeoffs |
 | `make-decision` | Turning fuzzy tradeoffs into decision memos with recommendations |
