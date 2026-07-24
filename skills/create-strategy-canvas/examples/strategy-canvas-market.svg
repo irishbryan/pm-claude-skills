@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="market-title-1 market-desc-1">
+<title id="market-title-1">Current Market Value Curves</title>
+<desc id="market-desc-1">Current-market value curves for Current offering, Configurable suite, Service-led provider, Manual toolkit, Vertical package, scored from 1 to 5 across Budget fit, Setup speed, Governance, Customizability, Expert-service dependency, Proven program patterns, Reuse across teams, Workflow continuity.</desc>
+<defs>
+<marker id="delta-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0F766E"/></marker>
+</defs>
+<rect width="1600" height="900" fill="#FFFFFF"/>
+<style>
+text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,Helvetica,sans-serif;fill:#18212F}
+.chart-title{font-size:30px;font-weight:700}
+.subtitle{font-size:18px;fill:#5B6472}
+.legend{font-size:17px;font-weight:600}
+.tick{font-size:16px;fill:#5B6472}
+.axis-title{font-size:16px;font-weight:600;fill:#5B6472}
+.factor-id{font-size:16px;font-weight:700;fill:#5B6472}
+.factor-label{font-size:17px;font-weight:600}
+.delta{font-size:16px;font-weight:700;fill:#0F766E}
+.footer{font-size:14px;fill:#6B7280}
+</style>
+<text x="70.0" y="62.0" text-anchor="start" class="chart-title">Current Market Value Curves</text>
+<text x="70.0" y="101.0" text-anchor="start" class="subtitle">Strategy Canvas for Community Program Operations — Illustrative archetypes for small nonprofit program teams</text>
+<line x1="90.0" y1="150.0" x2="134.0" y2="150.0" stroke="#5B6472" stroke-width="4" stroke-dasharray="10 7"/>
+<circle cx="112.0" cy="150.0" r="6.0" fill="#FFFFFF" stroke="#5B6472" stroke-width="3"/>
+<text x="146.0" y="156.0" text-anchor="start" class="legend">Current offering</text>
+<line x1="326.0" y1="150.0" x2="370.0" y2="150.0" stroke="#0072B2" stroke-width="4"/>
+<rect x="342.0" y="144.0" width="12.0" height="12.0" rx="1.5" fill="#FFFFFF" stroke="#0072B2" stroke-width="3"/>
+<text x="382.0" y="156.0" text-anchor="start" class="legend">Configurable suite</text>
+<line x1="580.0" y1="150.0" x2="624.0" y2="150.0" stroke="#D55E00" stroke-width="4" stroke-dasharray="3 7"/>
+<polygon points="602.0,143.0 609.0,150.0 602.0,157.0 595.0,150.0" fill="#FFFFFF" stroke="#D55E00" stroke-width="3"/>
+<text x="636.0" y="156.0" text-anchor="start" class="legend">Service-led provider</text>
+<line x1="852.0" y1="150.0" x2="896.0" y2="150.0" stroke="#7A5195" stroke-width="4" stroke-dasharray="13 6 3 6"/>
+<polygon points="874.0,142.0 881.0,156.0 867.0,156.0" fill="#FFFFFF" stroke="#7A5195" stroke-width="3"/>
+<text x="908.0" y="156.0" text-anchor="start" class="legend">Manual toolkit</text>
+<line x1="1070.0" y1="150.0" x2="1114.0" y2="150.0" stroke="#B07D00" stroke-width="4" stroke-dasharray="7 5"/>
+<circle cx="1092.0" cy="150.0" r="6.0" fill="#FFFFFF" stroke="#B07D00" stroke-width="3"/>
+<text x="1126.0" y="156.0" text-anchor="start" class="legend">Vertical package</text>
+<line x1="155.0" y1="650.0" x2="1530.0" y2="650.0" stroke="#C8CDD4" stroke-width="1.5"/>
+<text x="131.0" y="656.0" text-anchor="end" class="tick">1</text>
+<line x1="155.0" y1="540.0" x2="1530.0" y2="540.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="131.0" y="546.0" text-anchor="end" class="tick">2</text>
+<line x1="155.0" y1="430.0" x2="1530.0" y2="430.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="131.0" y="436.0" text-anchor="end" class="tick">3</text>
+<line x1="155.0" y1="320.0" x2="1530.0" y2="320.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="131.0" y="326.0" text-anchor="end" class="tick">4</text>
+<line x1="155.0" y1="210.0" x2="1530.0" y2="210.0" stroke="#C8CDD4" stroke-width="1.5"/>
+<text x="131.0" y="216.0" text-anchor="end" class="tick">5</text>
+<text x="42.0" y="430.0" text-anchor="middle" class="axis-title" transform="rotate(-90 42 430.0)">Offering level</text>
+<text x="1530.0" y="192.0" text-anchor="end" class="tick">Offering level: 1 = very low, 5 = very high</text>
+<polyline points="155.0,430.0 351.4,540.0 547.9,540.0 744.3,320.0 940.7,540.0 1137.1,650.0 1333.6,540.0 1530.0,540.0" fill="none" stroke="#5B6472" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="10 7"/>
+<g data-series="current" data-factor="F1" data-score="3"><circle cx="155.0" cy="430.0" r="8.0" fill="#FFFFFF" stroke="#5B6472" stroke-width="3"/></g>
+<g data-series="current" data-factor="F2" data-score="2"><circle cx="351.4" cy="540.0" r="8.0" fill="#FFFFFF" stroke="#5B6472" stroke-width="3"/></g>
+<g data-series="current" data-factor="F3" data-score="2"><circle cx="547.9" cy="540.0" r="8.0" fill="#FFFFFF" stroke="#5B6472" stroke-width="3"/></g>
+<g data-series="current" data-factor="F4" data-score="4"><circle cx="744.3" cy="320.0" r="8.0" fill="#FFFFFF" stroke="#5B6472" stroke-width="3"/></g>
+<g data-series="current" data-factor="F5" data-score="2"><circle cx="940.7" cy="540.0" r="8.0" fill="#FFFFFF" stroke="#5B6472" stroke-width="3"/></g>
+<g data-series="current" data-factor="F6" data-score="1"><circle cx="1137.1" cy="650.0" r="8.0" fill="#FFFFFF" stroke="#5B6472" stroke-width="3"/></g>
+<g data-series="current" data-factor="F7" data-score="2"><circle cx="1333.6" cy="540.0" r="8.0" fill="#FFFFFF" stroke="#5B6472" stroke-width="3"/></g>
+<g data-series="current" data-factor="F8" data-score="2"><circle cx="1530.0" cy="540.0" r="8.0" fill="#FFFFFF" stroke="#5B6472" stroke-width="3"/></g>
+<polyline points="155.0,430.0 351.4,540.0 547.9,320.0 744.3,210.0 940.7,540.0 1137.1,540.0 1333.6,430.0 1530.0,540.0" fill="none" stroke="#0072B2" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<g data-series="configurable-suite" data-factor="F1" data-score="3"><rect x="147.0" y="422.0" width="16.0" height="16.0" rx="1.5" fill="#FFFFFF" stroke="#0072B2" stroke-width="3"/></g>
+<g data-series="configurable-suite" data-factor="F2" data-score="2"><rect x="343.4" y="532.0" width="16.0" height="16.0" rx="1.5" fill="#FFFFFF" stroke="#0072B2" stroke-width="3"/></g>
+<g data-series="configurable-suite" data-factor="F3" data-score="4"><rect x="539.9" y="312.0" width="16.0" height="16.0" rx="1.5" fill="#FFFFFF" stroke="#0072B2" stroke-width="3"/></g>
+<g data-series="configurable-suite" data-factor="F4" data-score="5"><rect x="736.3" y="202.0" width="16.0" height="16.0" rx="1.5" fill="#FFFFFF" stroke="#0072B2" stroke-width="3"/></g>
+<g data-series="configurable-suite" data-factor="F5" data-score="2"><rect x="932.7" y="532.0" width="16.0" height="16.0" rx="1.5" fill="#FFFFFF" stroke="#0072B2" stroke-width="3"/></g>
+<g data-series="configurable-suite" data-factor="F6" data-score="2"><rect x="1129.1" y="532.0" width="16.0" height="16.0" rx="1.5" fill="#FFFFFF" stroke="#0072B2" stroke-width="3"/></g>
+<g data-series="configurable-suite" data-factor="F7" data-score="3"><rect x="1325.6" y="422.0" width="16.0" height="16.0" rx="1.5" fill="#FFFFFF" stroke="#0072B2" stroke-width="3"/></g>
+<g data-series="configurable-suite" data-factor="F8" data-score="2"><rect x="1522.0" y="532.0" width="16.0" height="16.0" rx="1.5" fill="#FFFFFF" stroke="#0072B2" stroke-width="3"/></g>
+<polyline points="155.0,650.0 351.4,430.0 547.9,320.0 744.3,210.0 940.7,210.0 1137.1,320.0 1333.6,540.0 1530.0,430.0" fill="none" stroke="#D55E00" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="3 7"/>
+<g data-series="service-led" data-factor="F1" data-score="1"><polygon points="155.0,641.0 164.0,650.0 155.0,659.0 146.0,650.0" fill="#FFFFFF" stroke="#D55E00" stroke-width="3"/></g>
+<g data-series="service-led" data-factor="F2" data-score="3"><polygon points="351.4,421.0 360.4,430.0 351.4,439.0 342.4,430.0" fill="#FFFFFF" stroke="#D55E00" stroke-width="3"/></g>
+<g data-series="service-led" data-factor="F3" data-score="4"><polygon points="547.9,311.0 556.9,320.0 547.9,329.0 538.9,320.0" fill="#FFFFFF" stroke="#D55E00" stroke-width="3"/></g>
+<g data-series="service-led" data-factor="F4" data-score="5"><polygon points="744.3,201.0 753.3,210.0 744.3,219.0 735.3,210.0" fill="#FFFFFF" stroke="#D55E00" stroke-width="3"/></g>
+<g data-series="service-led" data-factor="F5" data-score="5"><polygon points="940.7,201.0 949.7,210.0 940.7,219.0 931.7,210.0" fill="#FFFFFF" stroke="#D55E00" stroke-width="3"/></g>
+<g data-series="service-led" data-factor="F6" data-score="4"><polygon points="1137.1,311.0 1146.1,320.0 1137.1,329.0 1128.1,320.0" fill="#FFFFFF" stroke="#D55E00" stroke-width="3"/></g>
+<g data-series="service-led" data-factor="F7" data-score="2"><polygon points="1333.6,531.0 1342.6,540.0 1333.6,549.0 1324.6,540.0" fill="#FFFFFF" stroke="#D55E00" stroke-width="3"/></g>
+<g data-series="service-led" data-factor="F8" data-score="3"><polygon points="1530.0,421.0 1539.0,430.0 1530.0,439.0 1521.0,430.0" fill="#FFFFFF" stroke="#D55E00" stroke-width="3"/></g>
+<polyline points="155.0,210.0 351.4,650.0 547.9,650.0 744.3,320.0 940.7,650.0 1137.1,650.0 1333.6,650.0 1530.0,650.0" fill="none" stroke="#7A5195" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="13 6 3 6"/>
+<g data-series="manual-toolkit" data-factor="F1" data-score="5"><polygon points="155.0,200.0 164.0,218.0 146.0,218.0" fill="#FFFFFF" stroke="#7A5195" stroke-width="3"/></g>
+<g data-series="manual-toolkit" data-factor="F2" data-score="1"><polygon points="351.4,640.0 360.4,658.0 342.4,658.0" fill="#FFFFFF" stroke="#7A5195" stroke-width="3"/></g>
+<g data-series="manual-toolkit" data-factor="F3" data-score="1"><polygon points="547.9,640.0 556.9,658.0 538.9,658.0" fill="#FFFFFF" stroke="#7A5195" stroke-width="3"/></g>
+<g data-series="manual-toolkit" data-factor="F4" data-score="4"><polygon points="744.3,310.0 753.3,328.0 735.3,328.0" fill="#FFFFFF" stroke="#7A5195" stroke-width="3"/></g>
+<g data-series="manual-toolkit" data-factor="F5" data-score="1"><polygon points="940.7,640.0 949.7,658.0 931.7,658.0" fill="#FFFFFF" stroke="#7A5195" stroke-width="3"/></g>
+<g data-series="manual-toolkit" data-factor="F6" data-score="1"><polygon points="1137.1,640.0 1146.1,658.0 1128.1,658.0" fill="#FFFFFF" stroke="#7A5195" stroke-width="3"/></g>
+<g data-series="manual-toolkit" data-factor="F7" data-score="1"><polygon points="1333.6,640.0 1342.6,658.0 1324.6,658.0" fill="#FFFFFF" stroke="#7A5195" stroke-width="3"/></g>
+<g data-series="manual-toolkit" data-factor="F8" data-score="1"><polygon points="1530.0,640.0 1539.0,658.0 1521.0,658.0" fill="#FFFFFF" stroke="#7A5195" stroke-width="3"/></g>
+<polyline points="155.0,540.0 351.4,320.0 547.9,320.0 744.3,540.0 940.7,430.0 1137.1,210.0 1333.6,430.0 1530.0,430.0" fill="none" stroke="#B07D00" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="7 5"/>
+<g data-series="vertical-package" data-factor="F1" data-score="2"><circle cx="155.0" cy="540.0" r="8.0" fill="#FFFFFF" stroke="#B07D00" stroke-width="3"/></g>
+<g data-series="vertical-package" data-factor="F2" data-score="4"><circle cx="351.4" cy="320.0" r="8.0" fill="#FFFFFF" stroke="#B07D00" stroke-width="3"/></g>
+<g data-series="vertical-package" data-factor="F3" data-score="4"><circle cx="547.9" cy="320.0" r="8.0" fill="#FFFFFF" stroke="#B07D00" stroke-width="3"/></g>
+<g data-series="vertical-package" data-factor="F4" data-score="2"><circle cx="744.3" cy="540.0" r="8.0" fill="#FFFFFF" stroke="#B07D00" stroke-width="3"/></g>
+<g data-series="vertical-package" data-factor="F5" data-score="3"><circle cx="940.7" cy="430.0" r="8.0" fill="#FFFFFF" stroke="#B07D00" stroke-width="3"/></g>
+<g data-series="vertical-package" data-factor="F6" data-score="5"><circle cx="1137.1" cy="210.0" r="8.0" fill="#FFFFFF" stroke="#B07D00" stroke-width="3"/></g>
+<g data-series="vertical-package" data-factor="F7" data-score="3"><circle cx="1333.6" cy="430.0" r="8.0" fill="#FFFFFF" stroke="#B07D00" stroke-width="3"/></g>
+<g data-series="vertical-package" data-factor="F8" data-score="3"><circle cx="1530.0" cy="430.0" r="8.0" fill="#FFFFFF" stroke="#B07D00" stroke-width="3"/></g>
+<text x="155.0" y="690.0" text-anchor="middle" class="factor-id">F1</text>
+<text x="155.0" y="720.0" text-anchor="middle" class="factor-label"><tspan x="155.0" dy="0">Budget fit</tspan></text>
+<text x="351.4" y="690.0" text-anchor="middle" class="factor-id">F2</text>
+<text x="351.4" y="720.0" text-anchor="middle" class="factor-label"><tspan x="351.4" dy="0">Setup speed</tspan></text>
+<text x="547.9" y="690.0" text-anchor="middle" class="factor-id">F3</text>
+<text x="547.9" y="720.0" text-anchor="middle" class="factor-label"><tspan x="547.9" dy="0">Governance</tspan></text>
+<text x="744.3" y="690.0" text-anchor="middle" class="factor-id">F4</text>
+<text x="744.3" y="720.0" text-anchor="middle" class="factor-label"><tspan x="744.3" dy="0">Customizability</tspan></text>
+<text x="940.7" y="690.0" text-anchor="middle" class="factor-id">F5</text>
+<text x="940.7" y="720.0" text-anchor="middle" class="factor-label"><tspan x="940.7" dy="0">Service dependency</tspan></text>
+<text x="1137.1" y="690.0" text-anchor="middle" class="factor-id">F6</text>
+<text x="1137.1" y="720.0" text-anchor="middle" class="factor-label"><tspan x="1137.1" dy="0">Proven patterns</tspan></text>
+<text x="1333.6" y="690.0" text-anchor="middle" class="factor-id">F7</text>
+<text x="1333.6" y="720.0" text-anchor="middle" class="factor-label"><tspan x="1333.6" dy="0">Cross-team reuse</tspan></text>
+<text x="1530.0" y="690.0" text-anchor="middle" class="factor-id">F8</text>
+<text x="1530.0" y="720.0" text-anchor="middle" class="factor-label"><tspan x="1530.0" dy="0">Workflow</tspan><tspan x="1530.0" dy="23">continuity</tspan></text>
+<text x="1530.0" y="858.0" text-anchor="end" class="footer">Scores are illustrative strategic hypotheses; validate them with buyer and market evidence.</text>
+</svg>

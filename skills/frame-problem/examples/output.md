@@ -22,7 +22,7 @@ The evaluation gap compounds. Prospects who cannot test governance controls may 
 
 Recommendation
 
-Research first. Validate which permission questions block purchase and what evidence buyers need before shaping a self-serve evaluation path.
+Research first. Validate which permission questions block purchase and what evidence buyers need before deciding whether this problem is worth shaping.
 
 Keep the goal narrow. The frame is about evaluation confidence and purchase friction, not redesigning the permission model.
 

@@ -1,6 +1,6 @@
 # Feedback Triage - Billing in #customer-feedback (Apr 22-29)
 
-> tl;dr: 7 findings. 3 tracked, 1 needs review, 3 untracked. Create issues for: #1, #2, #5.
+> tl;dr: 7 findings. 3 tracked, 1 needs review, 3 untracked. Create issues for: #1, #2, #6.
 
 | # | Type | Summary | Source | Issue | Status | Urgency |
 |---|---|---|---|---|---|---|

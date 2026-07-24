@@ -52,7 +52,8 @@ Help a person turn fuzzy goals, draft OKRs, or broad initiatives into a clear Ob
 - If the user asks to grade end-of-cycle progress, ask for actual results and score progress separately from draft quality.
 - If the user wants to fast-track, ask for the draft Objective, draft Key Results, OKR cycle, scope, owner, strategic priority, candidate metrics, known baselines, target dates, constraints, and committed or aspirational status.
 - Follow `examples/output.md` as the canonical output template.
-- Match its title format, Objective line, one-line `KR1: ...` pattern, grade line, revision list, open question list, and compact paste-ready style.
+- Match its plain title, Objective line, one-line `KR1: ...` pattern, compact grade, and paste-ready style.
+- Prefix the title with `[DRAFT]` only when unresolved inputs materially prevent a publish-ready OKR.
 - Keep the final OKR concise enough to paste into a planning doc without cleanup.
 - Include `Revisions` only when there are concrete changes, caveats, or target-setting notes the user should handle before publishing.
 - Include `Open questions` only when unanswered questions materially affect the OKR quality or target credibility.

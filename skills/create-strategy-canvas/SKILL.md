@@ -1,94 +1,90 @@
 ---
 name: pm-skills:create-strategy-canvas
-description: Create a Blue Ocean Strategy-style strategy canvas with competitive factors, competitor discovery, factor-by-factor competitor analysis, 1-5 value-curve scoring, readable ASCII charts, and eliminate-reduce-raise-create actions. Use when a PM, founder, strategist, or team lead wants to identify relevant competitors or substitutes, rank them against an offering, and shape a differentiated future strategy.
+description: Create an evidence-backed Blue Ocean Strategy-style strategy canvas with competitor discovery, cited comparator dossiers, 1-5 value-curve scoring, crisp visual charts when supported, plotted ASCII fallback when not, and eliminate-reduce-raise-create actions. Use when a PM, founder, strategist, or team lead wants to compare an offering with competitors, substitutes, or the status quo and shape a differentiated future strategy.
 ---
 
 # Purpose
 
-Help a PM, founder, strategist, or team lead create a paste-ready strategy canvas that shows where the offering is now, where it should go next, how selected competitors or alternatives compare, and what actions create a clearer strategic shift.
-
-# When to use
-
-- Comparing an offering against competitors, substitutes, or the current market norm
-- Identifying the competitors or alternatives that should be plotted before scoring
-- Evaluating multiple competitors or alternatives against the same buyer value factors
-- Looking for a differentiated strategy instead of incremental feature competition
-- Turning competitive analysis into a visual value curve
-- Identifying what to eliminate, reduce, raise, or create in a product, service, or business model
-- Preparing strategy workshop notes, planning docs, product pitches, or leadership discussion material
+Create a paste-ready, visually clear strategy canvas showing the current offering, intended future curve, relevant buyer alternatives, and the actions required to create meaningful strategic divergence.
 
 # Inputs
 
 - Market, category, or strategic arena
-- Target buyer, user, customer, or noncustomer segment
-- Offering being assessed
-- Competitors, substitutes, alternatives, or current market norms to compare
-- Why each competitor or alternative is relevant to the target buyer
-- Competitive factors buyers care about, usually 6-10 factors
-- Relative scores from 1-5 for current offering, desired future offering, and each selected competitor or alternative
-- Evidence, assumptions, customer signals, or research behind scores
-- Local context from `~/.config/pm-skills/config.yml` or `~/.pm-skills/config.yml` when available
+- Target buyer or noncustomer segment and the job they need done
+- Offering being assessed and the decision the canvas should inform
+- Candidate competitors, substitutes, status quo, or internal alternatives
+- Competitive factors, usually 6-10
+- Evidence, customer signals, assumptions, and research behind relative scores
+- Optional local context from `~/.config/pm-skills/config.yml` or `~/.pm-skills/config.yml`
 
-# Instructions
+# Workflow
 
-- Use local context only for defaults like role, team, company, product area, and timezone. Do not treat it as market evidence or strategy.
-- This skill is conversational. Do not jump straight to a finished canvas unless the user explicitly asks to fast-track.
-- No tools are required.
-- Treat the strategy canvas as a diagnostic and action framework: competitive factors define the basis of comparison, relative scores show each offering's value curve, and the output should make strategic contrast easy to see.
-- Use a 1-5 score scale where `1` means very low buyer offering level and `5` means very high buyer offering level. A high score is not automatically good if the factor adds cost without meaningful buyer value.
-- Run a short interview in seven phases:
-  - clarify the market, target buyer, buyer job, offering, and decision context
-  - identify the competitor set, including direct competitors, substitutes, status quo, internal build or manual process, service-led alternatives, and low-end or high-end alternatives when relevant
-  - identify the factors the current market competes on and invests in
-  - analyze competitors factor-by-factor before plotting scores
-  - collect or draft relative 1-5 scores for current offering, future offering, and each selected competitor or alternative
-  - define the intended future curve and pressure-test whether it meaningfully diverges
-  - translate the curve shift into eliminate-reduce-raise-create moves
-- Ask one or two questions at a time.
-- Ask which competitors, substitutes, alternatives, or market norms to include. If the user gives many, recommend 2-5 for readability, but honor the user's chosen number.
-- If the user does not know which competitors to include, help build the set by asking:
-  - what buyers use today instead
-  - what they would do manually if no product existed
-  - which tools, services, spreadsheets, internal systems, or agencies absorb the budget or attention
-  - which premium, low-cost, and good-enough alternatives shape expectations
-- For each proposed competitor or alternative, ask why it belongs in the comparison and whether it reflects a real buyer choice.
-- If the user is missing factors, propose a draft factor list and ask them to confirm or edit it.
-- Before assigning scores, ask which offering is strongest and weakest on each factor and why. Use that ranking to derive 1-5 scores.
-- When scores are missing and the user wants momentum, create provisional scores clearly labeled as assumptions.
-- Capture score confidence as `High`, `Medium`, or `Low` when the user provides enough signal. Use `Low` for provisional rankings or weak evidence.
-- Push back when competitor choices are too narrow, omit substitutes, only include weak competitors, or do not match the target buyer's real alternatives.
-- Push back when the future curve only raises every factor, imitates a competitor, lacks a buyer segment, ignores cost structure, or has no create move.
-- Prefer 6-10 factors. Fewer than 5 usually hides the strategy; more than 10 usually makes the canvas too noisy for a working doc.
-- Include price as a factor when price is central to the market, but do not force it into every canvas.
-- Include substitutes or alternatives, not only direct competitors, when the user is trying to find a blue ocean move.
-- The future curve should usually show at least one meaningful reduction or elimination and at least one raised or created factor.
-- Use eliminate-reduce-raise-create as the action bridge:
-  - `Eliminate`: factors the industry competes on that should be removed
-  - `Reduce`: factors to offer below the current standard
-  - `Raise`: factors to offer above the current standard
-  - `Create`: new factors the industry has not meaningfully offered
-- Follow `examples/output.md` as the canonical output template.
-- Match its title format, `tl;dr` blockquote, factor table, competitor analysis table, score table, separate monospaced ASCII charts, ERRC table, and compact open questions.
-- Include `## Competitor Analysis` before the score table. Use columns for comparator, buyer alternative, why included, and score confidence.
-- The score table must appear before the ASCII charts and must include factor IDs, factor names, current offering score, future offering score, and one column for each selected competitor or alternative.
-- Add short score notes only when they explain important rankings, weak evidence, or surprising differences. Do not explain every cell.
-- Do not default to an overlaid multi-series ASCII chart. Separate charts are easier to read and paste into docs.
-- Include one ASCII chart for `Where We Are Now`, one for `Where We Want To Be`, and one chart for each selected competitor or alternative.
-- Each ASCII chart must be inside a fenced code block and use horizontal score bars with this pattern: `F1 Short label  3/5 |###..|`.
-- Use `#` for filled score units and `.` for empty units. Each bar must be exactly five characters long.
-- Keep chart labels short. Use factor IDs plus shortened factor names in charts, and rely on the factor table for full descriptions.
-- If there are more than five competitors or alternatives, keep every requested competitor chart but make the interpretation concise.
-- Include `## What The Curves Show` with 2-4 numbered observations about strategic divergence, cost or complexity tradeoffs, and buyer value.
-- Include at least one observation about competitor contrast when competitors are provided.
-- Include `## ERRC Moves` with a Markdown table using exactly these columns: `Eliminate`, `Reduce`, `Raise`, `Create`.
-- Include `## Open Questions` only when unanswered questions materially affect factor selection, scoring, evidence quality, or strategic confidence.
-- Keep the final output concise enough to paste into a working strategy doc.
-- Never invent evidence, customer behavior, competitor facts, financial impact, market data, dates, stakeholder views, or research confidence.
+- Use local context only for defaults such as role, team, company, product area, and timezone. Never treat it as market evidence.
+- Keep the process conversational unless the user asks to fast-track. Ask one or two questions at a time.
+- Use the 1-5 scale consistently: `1` means a very low offering level and `5` means a very high offering level. Do not imply that a high score is inherently desirable.
+- Work through these phases:
+  1. Clarify the arena, target buyer, buyer job, offering, and decision context.
+  2. Build the comparator set from direct competitors, substitutes, status quo, manual work, internal build, services, and low- or high-end alternatives.
+  3. Identify the factors on which the current market competes and invests.
+  4. Research and analyze comparators before assigning scores.
+  5. Rank offerings factor by factor, then derive relative 1-5 scores and confidence.
+  6. Define and pressure-test a future curve that creates a coherent value leap.
+  7. Translate the intended shift into eliminate-reduce-raise-create moves.
+- Push back when the comparator set is too narrow, only contains weak direct competitors, or does not reflect real buyer choices.
+- Push back when the future curve raises every factor, copies another curve, ignores cost or complexity, lacks a specific buyer, or has no meaningful create move.
+
+# Competitor research
+
+- Read [references/competitor-research.md](references/competitor-research.md) before researching named competitors or drafting comparator dossiers.
+- Research current public claims when browsing is available. Prefer first-party product, pricing, documentation, and policy pages; use credible independent sources when they add necessary buyer or market context.
+- Cite factual competitor claims near the claim, include the research date or source date, and separate observed facts from inference and strategic hypotheses.
+- If research tools are unavailable, use user-supplied evidence and mark unsupported claims and scores as provisional. Never invent evidence.
+- Recommend 2-5 primary comparators for interpretation, but honor the requested set. Document relevant but unplotted alternatives and explain which plotted comparator represents them.
+- Give each plotted comparator a compact dossier with buyer relevance, category, inclusion reason, defining strengths and weaknesses, pivotal score rationales, evidence freshness, and confidence.
+
+# Factors and scoring
+
+- Prefer 6-10 buyer-facing factors. Ask the user to reduce a longer list unless retaining it is important to the decision.
+- Include price only when it shapes the buying decision. Include substitutes when the goal is to find a value leap rather than win a feature checklist.
+- Before scoring, ask which offering is strongest and weakest on each factor and why. Derive scores from the relative ranking.
+- Capture score confidence as `High`, `Medium`, or `Low`. Treat provisional rankings, stale sources, and indirect evidence as `Low` confidence.
+- Add rationale only for pivotal, surprising, or weakly supported scores. Do not fabricate precision by explaining every cell.
+- Require the future curve to include at least one meaningful reduction or elimination and at least one raised or created source of buyer value.
+
+# Visual delivery
+
+- Read [references/visual-output.md](references/visual-output.md) before choosing the delivery format.
+- Choose one capability-appropriate path:
+  - If accurate, readable visual charts can be created and displayed, return the score table with a current-market chart and a separate current-versus-future chart. Use any reliable supported method, and batch large comparator sets instead of overcrowding one panel.
+  - If visual charts cannot be created or displayed reliably, return the score table with titled ASCII value-curve panels. Use one solid curve per panel, stack current-market panels vertically, and place the separately titled current and future panels side by side when width permits.
+- Use `scripts/render_strategy_canvas.py` as an optional deterministic helper when Python 3 and a writable workspace are available. It is not a required delivery path.
+- Keep every plotted score and label consistent with the score table. Use image-generation tools only when their output can preserve exact chart text and values; otherwise use deterministic charting or ASCII.
+- Do not require a fixed file type, output directory, companion document, or bundle of artifacts unless the user asks for files.
+- Do not return both visual and ASCII charts unless the user asks for both or the response is explicitly demonstrating the available formats.
+- Do not substitute rating bars, coded marker legends, dotted-line semantics, or an unreadable multi-series ASCII overlay for a plotted value curve.
+
+# Interpretation and action
+
+- Explain 2-4 important curve observations covering strategic divergence, buyer value, cost or complexity tradeoffs, and comparator contrast.
+- Use eliminate-reduce-raise-create as the bridge from chart to action:
+  - `Eliminate`: remove factors the market invests in without enough buyer value.
+  - `Reduce`: offer selected factors below the current standard.
+  - `Raise`: offer selected factors above the current standard.
+  - `Create`: introduce buyer value the current market does not meaningfully offer.
+- Include open questions only when they materially affect factor selection, scoring, evidence quality, or confidence in the strategic direction.
 
 # Output
 
-A paste-ready strategy canvas with competitive factors, selected competitor evaluation, score table, separate readable ASCII charts, interpretation, ERRC moves, and only the open questions needed to improve confidence.
+Return a concise strategy package containing:
 
-# Examples
+1. Title and `tl;dr`
+2. Competitive-factor definitions
+3. Comparator selection and exclusion notes
+4. Compact competitor dossiers with citations and confidence
+5. Score table and pivotal score notes
+6. Current-market and current-versus-future visuals, or ASCII fallback
+7. Curve interpretation
+8. ERRC moves
+9. Material evidence gaps and open questions
 
-Use `examples/output.md` as the formatting source of truth.
+Use [examples/output.md](examples/output.md) as the canonical document structure. Keep all bundled examples, fixtures, themes, and language vendor-neutral and suitable for an open-source repository.
