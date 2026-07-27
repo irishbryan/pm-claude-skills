@@ -35,9 +35,9 @@ Create a paste-ready, visually clear strategy canvas showing the current offerin
 
 # Competitor research
 
-- Read [references/competitor-research.md](references/competitor-research.md) before researching named competitors or drafting comparator dossiers.
 - Research current public claims when browsing is available. Prefer first-party product, pricing, documentation, and policy pages; use credible independent sources when they add necessary buyer or market context.
-- Cite factual competitor claims near the claim, include the research date or source date, and separate observed facts from inference and strategic hypotheses.
+- Attribute vendor claims, cite factual competitor claims near the claim, include the research date or source date, and separate observations from inference and strategic hypotheses.
+- Compare the same target buyer, use case, geography, plan level, and time period across alternatives. Do not treat absence from public documentation as proof that a capability does not exist.
 - If research tools are unavailable, use user-supplied evidence and mark unsupported claims and scores as provisional. Never invent evidence.
 - Recommend 2-5 primary comparators for interpretation, but honor the requested set. Document relevant but unplotted alternatives and explain which plotted comparator represents them.
 - Give each plotted comparator a compact dossier with buyer relevance, category, inclusion reason, defining strengths and weaknesses, pivotal score rationales, evidence freshness, and confidence.
@@ -53,11 +53,9 @@ Create a paste-ready, visually clear strategy canvas showing the current offerin
 
 # Visual delivery
 
-- Read [references/visual-output.md](references/visual-output.md) before choosing the delivery format.
-- Choose one capability-appropriate path:
-  - If accurate, readable visual charts can be created and displayed, return the score table with a current-market chart and a separate current-versus-future chart. Use any reliable supported method, and batch large comparator sets instead of overcrowding one panel.
-  - If visual charts cannot be created or displayed reliably, return the score table with titled ASCII value-curve panels. Use one solid curve per panel, stack current-market panels vertically, and place the separately titled current and future panels side by side when width permits.
-- Use `scripts/render_strategy_canvas.py` as an optional deterministic helper when Python 3 and a writable workspace are available. It is not a required delivery path.
+- Prefer high-fidelity visual charts whenever they can be created and displayed accurately. Return the score table with a current-market chart and a separate current-versus-future chart.
+- Use titled ASCII value-curve panels only when reliable visual output is unavailable. Use one solid curve per panel, stack current-market panels vertically, and place the separately titled current and future panels side by side when width permits.
+- For visual charts, use crisp text, a consistent 1-5 scale, restrained gridlines, a colorblind-safe palette, and lines that remain distinguishable without color. Plot no more than four comparators with the current offering in one panel; split larger sets into consistent panels.
 - Keep every plotted score and label consistent with the score table. Use image-generation tools only when their output can preserve exact chart text and values; otherwise use deterministic charting or ASCII.
 - Do not require a fixed file type, output directory, companion document, or bundle of artifacts unless the user asks for files.
 - Do not return both visual and ASCII charts unless the user asks for both or the response is explicitly demonstrating the available formats.
@@ -87,4 +85,4 @@ Return a concise strategy package containing:
 8. ERRC moves
 9. Material evidence gaps and open questions
 
-Use [examples/output.md](examples/output.md) as the canonical document structure. Keep all bundled examples, fixtures, themes, and language vendor-neutral and suitable for an open-source repository.
+Use [examples/output.md](examples/output.md) as the canonical document structure. Keep the example and language vendor-neutral and suitable for an open-source repository.

@@ -93,19 +93,21 @@ Pivotal score notes:
 2. **Customization is deliberately reduced.** The future curve trades maximum flexibility for clearer defaults and faster adoption.
 3. **All comparator scores remain provisional.** The archetypes help structure discovery but cannot replace named alternatives and buyer evidence.
 
-The visual charts and ASCII charts below demonstrate alternative delivery paths. In a real response, use the visual charts when the agent can create and display them accurately; otherwise use the ASCII fallback. Do not return both unless the user asks for both.
+The examples below demonstrate alternative delivery paths. In a real response, use high-fidelity charts whenever accurate visual generation is available. Use ASCII only when it is not, and do not return both unless the user asks for both.
 
-### Current Market Value Curves
+### Preferred: High-Fidelity Charts
+
+#### Current Market Value Curves
 
 ![Current market value curves comparing the current offering with four illustrative buyer alternatives](strategy-canvas-market.svg)
 
-### Current vs. Future
+#### Current vs. Future
 
 ![Current and future value curves with annotated score changes](strategy-canvas-future.svg)
 
-### ASCII Fallback When Images Cannot Be Displayed
+### Fallback Only: ASCII Charts
 
-Use one plainly titled solid-line chart per series. Stack the crowded market panels and place current and future side by side; do not encode identity through marker legends or dotted lines. A standalone copy of this example is [strategy-canvas-ascii.txt](strategy-canvas-ascii.txt).
+Use one plainly titled solid-line chart per series. Stack market panels and place current and future side by side; do not encode identity through marker legends or dotted lines. This compact four-factor example teaches the fallback format; a real fallback should plot every factor and selected comparator from its score table.
 
 ```text
 CURRENT MARKET VALUE CURVES
@@ -114,91 +116,48 @@ CURRENT OFFERING
 5 |
   |
 4 |                  o
-  |                // \\
-3 |o\             /     \
-  |  \\\        //       \\
-2 |     \o-----o           o\         /o-----o
-  |                          \\\   ///
-1 |                             \o/
-  +-------------------------------------------
-   F1    F2    F3    F4    F5    F6    F7    F8
+  |                //
+3 |o\             /
+  |  \\\        //
+2 |     \o-----o
+  |
+1 |
+  +---------------------
+   F1    F2    F3    F4
 
 CONFIGURABLE SUITE
 5 |                 /o
-  |              ///  \
-4 |            o/      \
-  |          //         \
-3 |o\       /            \            /o\
-  |  \\\  //              \        ///   \\\
-2 |     \o                 o-----o/         \o
+  |              ///
+4 |            o/
+  |          //
+3 |o\       /
+  |  \\\  //
+2 |     \o
   |
 1 |
-  +-------------------------------------------
-   F1    F2    F3    F4    F5    F6    F7    F8
-
-SERVICE-LED PROVIDER
-5 |                 /o-----o\
-  |              ///         \\\
-4 |           /o/               \o
-  |        ///                    \\
-3 |      o/                         \       /o
-  |    //                            \\  ///
-2 |   /                                o/
-  | //
-1 |o
-  +-------------------------------------------
-   F1    F2    F3    F4    F5    F6    F7    F8
-
-MANUAL TOOLKIT
-5 |o
-  | \
-4 |                  o
-  |  \              / \
-3 |   \            /   \
-  |    \          /     \
-2 |              /       \
-  |     \       /         \
-1 |      o-----o           o-----o-----o-----o
-  +-------------------------------------------
-   F1    F2    F3    F4    F5    F6    F7    F8
-
-VERTICAL PACKAGE
-5 |                              o
-  |                            // \\
-4 |      o-----o              /     \
-  |    //       \\          //       \\
-3 |   /           \       /o           o-----o
-  | //             \\  ///
-2 |o                 o/
-  |
-1 |
-  +-------------------------------------------
-   F1    F2    F3    F4    F5    F6    F7    F8
+  +---------------------
+   F1    F2    F3    F4
 
 CURRENT VS. FUTURE STRATEGY
 
-CURRENT OFFERING                                  FUTURE OFFERING
-5 |                                               5 |      o                       o-----o-----o
-  |                                                 |    // \\                    /
-4 |                  o                            4 |   /     \
-  |                // \\                            | //       \\                /
-3 |o\             /     \                         3 |o           o-----o        /
-  |  \\\        //       \\                         |                   \\     /
-2 |     \o-----o           o\         /o-----o    2 |                     \
-  |                          \\\   ///              |                      \\ /
-1 |                             \o/               1 |                        o
-  +-------------------------------------------      +-------------------------------------------
-   F1    F2    F3    F4    F5    F6    F7    F8      F1    F2    F3    F4    F5    F6    F7    F8
+CURRENT OFFERING              FUTURE OFFERING
+5 |                           5 |      o
+  |                             |    // \\
+4 |                  o        4 |   /     \
+  |                //           | //       \\
+3 |o\             /           3 |o           o-----o
+  |  \\\        //              |
+2 |     \o-----o              2 |
+  |                             |
+1 |                           1 |
+  +---------------------        +---------------------
+   F1    F2    F3    F4          F1    F2    F3    F4
 
 FACTOR KEY
 F1 Budget fit
 F2 Setup speed
 F3 Governance
 F4 Customizability
-F5 Expert-service dependency
-F6 Proven program patterns
-F7 Reuse across teams
-F8 Workflow continuity
 ```
 
 ## What The Curves Show
