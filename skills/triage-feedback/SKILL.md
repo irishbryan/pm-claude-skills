@@ -54,6 +54,7 @@ Help a PM find product feedback from a specific source, check whether it is trac
 - Include `Not checked` in the `tl;dr` only when one or more rows were not checked against a tracker.
 - If there are no untracked items, replace the issue-creation prompt with a brief note that no new issues are needed.
 - After presenting the report, offer to create issues for untracked items only when a tracker tool is available.
+- Do not recommend creating an issue for a `Needs review` row until the possible tracker match has been resolved.
 - If no tracker tool is available, offer to draft issue text for untracked items instead.
 - Create issues only after the user selects row numbers or says `all`.
 - If tracker, team, or project is unknown, ask before creating issues.

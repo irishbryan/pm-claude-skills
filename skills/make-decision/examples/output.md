@@ -14,9 +14,9 @@ Users sometimes want to write a message now and send it later, but the current p
 
 | Criteria | Option 1: Build scheduled sending now | Option 2: Defer scheduled sending |
 |:-|:-|:-|
-| Customer value | :green_circle: High. Gives users a clear new ability inside the existing message flow. | :yellow_circle: Medium. Avoids complexity, but leaves the current reminder-based workaround in place. |
-| Delivery confidence | :yellow_circle: Medium. The basic composer flow is straightforward, but failure states need definition. | :green_circle: High. Keeps the team focused on known messaging reliability work. |
-| Scope control | :yellow_circle: Medium. The first version can stay narrow if recurring and bulk sending are excluded. | :green_circle: High. Deferring removes the risk of scope expanding during the batch. |
+| Customer value | :green_circle: High. Gives users a clear new ability inside the existing message flow. | :red_circle: Low. Leaves the current reminder-based workaround in place. |
+| Delivery risk | :red_circle: High. Failure, edit, and cancellation states introduce significant delivery uncertainty. | :green_circle: Low. Adds no new delivery path and keeps the team focused on known reliability work. |
+| Scope expansion risk | :yellow_circle: Medium. The first version can stay narrow, but recurring and bulk sending are likely follow-on pressures. | :green_circle: Low. Deferring removes the immediate risk of scope expanding during the batch. |
 
 ## 4. Recommendation
 

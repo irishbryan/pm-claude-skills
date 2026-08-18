@@ -43,10 +43,11 @@ Help a PM clarify a decision, pressure-test the real options, and produce a memo
 - Follow `examples/output.md` as the canonical output template.
 - Match its title format, decision line, numbered section headings, criteria-first table, and recommendation style.
 - The options section must include a criteria-first Markdown table.
-- Each option cell must start with exactly one traffic-light marker, then a rating, then a short rationale.
-- Use this pattern exactly: `:green_circle: High. Context`, `:yellow_circle: Medium. Context`, or `:red_circle: Low. Context`
-- In rendered output, those markers may appear as `🟢`, `🟡`, or `🔴`. That is fine.
-- `:green_circle:` means favorable on that criterion, `:yellow_circle:` means mixed or uncertain, and `:red_circle:` means unfavorable.
+- Start each option cell with exactly one marker, the criterion's `High`, `Medium`, or `Low` level, and a short rationale: `:{color}_circle: {High|Medium|Low}. Context`. Rendered emoji are fine.
+- Use color for favorability and the rating for the level of the named criterion. For desirable criteria such as value or confidence, map `High` to green and `Low` to red. For undesirable criteria such as risk, cost, effort, complexity, or delay, invert the mapping: `Low` is green and `High` is red. `Medium` is yellow in either direction.
+- Decide whether more or less of a criterion is desirable before scoring it. Rephrase ambiguous criteria, and never choose a color mechanically from the rating word.
+- Do not use yellow to hide missing information. Ask for the evidence or state a clearly provisional assumption.
+- Check each table row for directionality and color consistency before writing the recommendation.
 - In decision memo mode, phrase the recommendation as the documented decision.
 - In decision worksheet mode, state the best current recommendation directly and name what could change it.
 - The recommendation must state the preferred option directly and name the main downside or open risk.
