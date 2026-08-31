@@ -35,11 +35,14 @@ Help a PM catch up on Slack by separating urgent items from useful background no
 - Score messages into four sections: urgent, action needed, for review, and FYI.
 - Never invent messages, people, permalinks, or timestamps.
 - Keep the output scannable, prioritized, and Slack-ready.
-- Follow `examples/output.md` as the canonical output template.
-- Match its title format, section headings, numbered list style, and bold-first-sentence item pattern.
+- Use `examples/output.md` as the canonical output shape.
+- Keep the title unnumbered. Immediately after it, write one clear, concise, concrete line in the form `**tl;dr:** ...` with the most urgent action and useful message counts, or state that nothing actionable was found.
+- Treat the `tl;dr` as the unnumbered lead, not a section. Follow it with supported sections from `Urgent`, `Action Needed`, `For Review`, and `FYI` as sequential numbered headings.
 - Include only sections with useful items.
-- Use numbered lists.
-- Start each item with a bold, concrete first sentence on the same line as the supporting detail.
+- Renumber the remaining sections sequentially when a category is omitted.
+- Use hierarchically numbered subheadings only when a genuine nested structure is needed. Do not use bold or italic labels as substitute section headings.
+- Use a short paragraph when a section contains one coherent point. When a section needs multiple distinct points, use a numbered list to make the recap easier to scan.
+- Apply bolding per numbered list. If every item in a list is one sentence, do not bold any item. If any item has two or more sentences, bold exactly the first sentence of every item in that list and keep all later sentences normal. Never mix bolded and unbolded first sentences within the same list; a bold sentence is content, not a substitute section heading.
 - Max 5 items per section.
 - Keep the full answer to 300 words or less.
 - If nothing actionable is found, say so briefly instead of adding empty sections.
@@ -47,7 +50,3 @@ Help a PM catch up on Slack by separating urgent items from useful background no
 # Output
 
 A prioritized Slack recap grouped by the useful sections found: urgent items, action items, review items, and FYIs.
-
-# Examples
-
-Use `examples/output.md` as the formatting source of truth.

@@ -1,23 +1,31 @@
 # Launch Scheduled Messages
 
-> **tl;dr:** Launch 0612 (June 12). This estimate looks achievable if the team protects one-time scheduled messages as fixed-time `Must` scope and treats reminders, polish, and richer controls as variable scope. The main risk is delivery-state reliability across send, edit, and cancel paths.
+**tl;dr:** Launch 0612 (June 12) with one-time scheduled messages as fixed scope. Cut reminders and richer controls before moving the date; delivery-state reliability is the main risk.
 
-## Estimate Summary
+## 1. Estimate Summary
 
-- **Project MMDD:** 0612 (June 12).
-- **Planning mode:** Fixed launch date.
-- **Fixed time, variable scope:** Hold 0612 (June 12) and cut reminders, recurring sends, bulk sends, and advanced scheduling controls before moving the date.
-- **Must-have scope:** Users can schedule one-time messages from the existing composer, edit or cancel before send, and see a clear delivery state.
+1. **The project shorthand is 0612 (June 12).**
 
-## Milestones
+2. **The team is planning backward from a fixed launch date.**
 
-- **Milestone 1 (Must): Lock launch scope on 0429 (April 29).** Confirm the composer entry point, schedule/edit/cancel rules, delivery states, and explicit cuts.
-- **Milestone 2 (Must): Scheduling path working on 0513 (May 13).** Create, edit, cancel, and send one-time scheduled messages end to end in the core flow.
-- **Milestone 3 (Must): Reliability checkpoint on 0527 (May 27).** Validate time-zone handling, send execution, cancellation timing, retries, and delivery-state accuracy.
-- **Milestone 4 (Should): Beta rollout on 0603 (June 3).** Release to a small cohort, monitor failed sends and confusing states, and fix launch-blocking issues only.
-- **Milestone 5 (Must): Launch scheduled messages on 0612 (June 12).** Ship the must-have experience with recurring sends, bulk sends, and richer controls excluded.
+3. **The launch date stays fixed while scope remains variable.** Hold 0612 (June 12) and cut reminders, recurring sends, bulk sends, and advanced scheduling controls before moving the date.
 
-## Risks and Scope Tradeoffs
+4. **The must-have scope covers one-time scheduled messages in the existing composer.** Users can edit or cancel before send and see a clear delivery state.
 
-- **Delivery-state bugs could erode trust.** If reliability is weak after 0527 (May 27), cut reminders and polish to focus on accurate send, edit, cancel, and failure states.
-- **Scheduling controls can expand quickly.** Keep launch to one-time sends from the existing composer; defer recurring sends, bulk sends, templates, and advanced reminders.
+## 2. Milestones
+
+1. **Milestone 1 locks launch scope on 0429 (April 29).** Confirm the composer entry point, schedule/edit/cancel rules, delivery states, and explicit cuts.
+
+2. **Milestone 2 delivers a working scheduling path on 0513 (May 13).** Create, edit, cancel, and send one-time scheduled messages end to end in the core flow.
+
+3. **Milestone 3 validates reliability on 0527 (May 27).** Check time-zone handling, send execution, cancellation timing, retries, and delivery-state accuracy.
+
+4. **Milestone 4 begins beta rollout on 0603 (June 3).** Release to a small cohort, monitor failed sends and confusing states, and fix launch-blocking issues only.
+
+5. **Milestone 5 launches scheduled messages on 0612 (June 12).** Ship the must-have experience with recurring sends, bulk sends, and richer controls excluded.
+
+## 3. Risks and Scope Tradeoffs
+
+1. **Delivery-state bugs could erode trust.** If reliability is weak after 0527 (May 27), cut reminders and polish to focus on accurate send, edit, cancel, and failure states.
+
+2. **Scheduling controls can expand quickly.** Keep launch to one-time sends from the existing composer; defer recurring sends, bulk sends, templates, and advanced reminders.

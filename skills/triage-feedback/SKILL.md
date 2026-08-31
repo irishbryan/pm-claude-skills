@@ -45,8 +45,13 @@ Help a PM find product feedback from a specific source, check whether it is trac
 - Urgency is a best guess using signals like severity words, customer impact, repeated reports, thread activity, incident language, stakeholder role, and tagged owner groups.
 - Use urgency levels: `High`, `Medium`, and `Low`.
 - Never invent messages, people, dates, links, tracker statuses, or issue IDs.
-- Follow `examples/output.md` as the canonical output template.
-- Keep the output concise: title, `tl;dr`, findings table, and issue-creation prompt.
+- Use `examples/output.md` as the canonical output shape.
+- Keep the title unnumbered. Immediately after it, write one clear, concise, concrete line in the form `**tl;dr:** ...` with finding counts, tracking coverage, and the actionable gap.
+- Treat the `tl;dr` as the unnumbered lead, not a section. Follow it with sequential numbered section headings: `Findings` and `Next Steps`.
+- Put the table in `Findings` and any issue-creation or drafting prompt in `Next Steps`.
+- Use hierarchically numbered subheadings only when a genuine nested structure is needed. Do not use bold or italic labels as substitute section headings.
+- Use a short paragraph when a section contains one coherent point. When a non-tabular section needs multiple distinct points, use a numbered list to make the report easier to scan.
+- Apply bolding per numbered list. If every item in a list is one sentence, do not bold any item. If any item has two or more sentences, bold exactly the first sentence of every item in that list and keep all later sentences normal. Never mix bolded and unbolded first sentences within the same list; a bold sentence is content, not a substitute section heading.
 - Use `Issue` as the tracker column heading.
 - Link issue IDs, PR numbers, or tracker record numbers when URLs are available. Use plain text only when the tool returns an identifier without a URL.
 - Limit the table to 15 rows, sorted by urgency first and newest date second.
@@ -64,8 +69,4 @@ Help a PM find product feedback from a specific source, check whether it is trac
 
 # Output
 
-A concise feedback triage report with a `tl;dr`, a compact findings table, and an option to create missing tracker issues.
-
-# Examples
-
-Use `examples/output.md` as the formatting source of truth.
+A concise feedback triage report with a concrete `tl;dr`, compact findings table, and next step for missing tracker issues.

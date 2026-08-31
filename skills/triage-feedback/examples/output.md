@@ -1,6 +1,8 @@
 # Feedback Triage - Billing in #customer-feedback (Apr 22-29)
 
-> tl;dr: 7 findings. 3 tracked, 1 needs review, 3 untracked. Create issues for: #1, #2, #6.
+**tl;dr:** Seven findings: 3 tracked, 1 needs review, and 3 untracked. Create issues for rows 1, 2, and 6.
+
+## 1. Findings
 
 | # | Type | Summary | Source | Issue | Status | Urgency |
 |---|---|---|---|---|---|---|
@@ -11,5 +13,7 @@
 | 5 | Request | Support wants clearer recovery steps when payment method verification fails | [Slack](#) | [BILL-414](#) | Needs review | Medium |
 | 6 | Feedback | Upgrade confirmation copy makes the renewal date hard to understand | [Slack](#) | - | Untracked | Low |
 | 7 | Feedback | Billing settings layout is hard to scan on smaller laptop screens | [Slack](#) | [BILL-430](#) | Tracked | Low |
+
+## 2. Next Steps
 
 Would you like me to create issues for any untracked items? List row numbers, or say "all".

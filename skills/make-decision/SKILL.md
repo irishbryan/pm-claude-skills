@@ -40,8 +40,13 @@ Help a PM clarify a decision, pressure-test the real options, and produce a memo
 - Always include a status quo or defer option if the user has not named one.
 - Require at least two viable options before drafting.
 - If the user fast-tracks, ask for the decision mode, decision question, background, urgency, viable options, main criteria or constraints, and likely recommendation.
-- Follow `examples/output.md` as the canonical output template.
-- Match its title format, decision line, numbered section headings, criteria-first table, and recommendation style.
+- Use `examples/output.md` as the canonical output shape.
+- Keep the title unnumbered. Immediately after it, write one clear, concise, concrete line in the form `**tl;dr:** ...`. In memo mode, state the decision and main downside; in worksheet mode, state the best current recommendation and key tradeoff.
+- Treat the `tl;dr` as the unnumbered lead, not a section. Follow it with sequential numbered section headings: `Decision`, `Background`, `Options`, and `Recommendation`.
+- Put the decision question inside `Decision`; do not leave it as an unheaded line before the numbered sections.
+- Use hierarchically numbered subheadings only when a genuine nested structure is needed. Do not use bold or italic labels as substitute section headings.
+- Use a short paragraph when a section contains one coherent point. When a non-tabular section needs multiple distinct points, use a numbered list to make the decision easier to scan.
+- Apply bolding per numbered list. If every item in a list is one sentence, do not bold any item. If any item has two or more sentences, bold exactly the first sentence of every item in that list and keep all later sentences normal. Never mix bolded and unbolded first sentences within the same list; a bold sentence is content, not a substitute section heading.
 - The options section must include a criteria-first Markdown table.
 - Start each option cell with exactly one marker, the criterion's `High`, `Medium`, or `Low` level, and a short rationale: `:{color}_circle: {High|Medium|Low}. Context`. Rendered emoji are fine.
 - Use color for favorability and the rating for the level of the named criterion. For desirable criteria such as value or confidence, map `High` to green and `Low` to red. For undesirable criteria such as risk, cost, effort, complexity, or delay, invert the mapping: `Low` is green and `High` is red. `Medium` is yellow in either direction.
@@ -56,7 +61,3 @@ Help a PM clarify a decision, pressure-test the real options, and produce a memo
 # Output
 
 A compact decision memo with background, options, a comparison table, and a direct recommendation.
-
-# Examples
-
-Use `examples/output.md` as the formatting source of truth.

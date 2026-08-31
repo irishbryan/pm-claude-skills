@@ -73,16 +73,19 @@ Create a paste-ready, visually clear strategy canvas showing the current offerin
 
 # Output
 
-Return a concise strategy package containing:
+Use [examples/output.md](examples/output.md) as the canonical output shape. Keep the title unnumbered. Immediately after it, write one clear, concise, concrete line in the form `**tl;dr:** ...` that states the strategic divergence, intended buyer value, and primary tradeoff.
 
-1. Title and `tl;dr`
-2. Competitive-factor definitions
-3. Comparator selection and exclusion notes
-4. Compact competitor dossiers with citations and confidence
-5. Score table and pivotal score notes
-6. Current-market and current-versus-future visuals, or ASCII fallback
-7. Curve interpretation
-8. ERRC moves
-9. Material evidence gaps and open questions
+Treat the `tl;dr` as the unnumbered lead, not a section. Follow it with these sequential numbered section headings:
 
-Use [examples/output.md](examples/output.md) as the canonical document structure. Keep the example and language vendor-neutral and suitable for an open-source repository.
+1. `Competitive Factors`
+2. `Comparator Selection`
+3. `Comparator Dossiers`
+4. `Strategy Canvas`
+5. `Visuals`
+6. `Curve Interpretation`
+7. `ERRC Moves`
+8. `Evidence Gaps and Open Questions`
+
+Use hierarchically numbered subheadings for genuine nested material, such as individual comparator dossiers, pivotal score notes, and distinct visual panels. Do not use plain text, bold, or italic labels as substitute section headings.
+
+Use a short paragraph when a section contains one coherent point. When a non-tabular section needs multiple distinct points, use a numbered list to make the canvas easier to scan. Apply bolding per numbered list: if every item is one sentence, do not bold any item; if any item has two or more sentences, bold exactly the first sentence of every item and keep all later sentences normal. Never mix bolded and unbolded first sentences within the same list; a bold sentence is content, not a substitute section heading. Keep the example and language vendor-neutral and suitable for an open-source repository.

@@ -32,11 +32,13 @@ Turn recent PM work into a short update that emphasizes outcomes, next steps, an
 - Never create or modify issues unless the user explicitly asks.
 - Never invent issue IDs, project names, dates, or metrics.
 - Keep the output Slack-ready and concrete.
-- Follow `examples/output.md` as the canonical output template.
-- Match its title format, section headings, numbered list style, and bold-first-sentence item pattern.
+- Use `examples/output.md` as the canonical output shape.
+- Keep the title unnumbered. Immediately after it, write one clear, concise, concrete line in the form `**tl;dr:** ...` with the most important outcome, next priority, and material risk or ask when present.
+- Treat the `tl;dr` as the unnumbered lead, not a section. Follow it with sequential numbered section headings: `Progress`, `Next`, and `Risks and Asks`.
+- Use hierarchically numbered subheadings only when a genuine nested structure is needed. Do not use bold or italic labels as substitute section headings.
 - Use the example sections in that order only.
-- Use numbered lists.
-- Start each item with a bold, concrete first sentence on the same line as the supporting detail.
+- Use a short paragraph when a section contains one coherent point. When a section needs multiple distinct points, use a numbered list to make the update easier to scan.
+- Apply bolding per numbered list. If every item in a list is one sentence, do not bold any item. If any item has two or more sentences, bold exactly the first sentence of every item in that list and keep all later sentences normal. Never mix bolded and unbolded first sentences within the same list; a bold sentence is content, not a substitute section heading.
 - Keep the full answer to 250 words or less.
 - Focus on outcomes and impact, not issue IDs.
 - If a section has no useful data, write `None this period`.
@@ -44,7 +46,3 @@ Turn recent PM work into a short update that emphasizes outcomes, next steps, an
 # Output
 
 A short personal update with progress, next steps, and asks that is easy to paste into Slack or a doc.
-
-# Examples
-
-Use `examples/output.md` as the formatting source of truth.

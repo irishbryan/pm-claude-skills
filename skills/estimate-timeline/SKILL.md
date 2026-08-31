@@ -45,21 +45,16 @@ Help a PM run a short estimation workshop that results in a credible launch-orie
 - Push back on fuzzy scope, missing dependencies, unrealistic sequencing, missing rollout checkpoints, scope cuts that are too vague to act on, and milestones that do not support the launch.
 - Distinguish proposed launch dates from committed launch dates. If a date is proposed rather than committed, label it clearly as an estimate and ask for confirmation before final output.
 - Prefer concrete milestones the team can aim at, especially dependency deadlines and rollout checkpoints when relevant.
-- Follow `examples/output.md` as the canonical output template.
-- Match its title format, `tl;dr` blockquote, section headings, bullet style, milestone pattern, and bold-first-sentence item pattern.
-- Preserve these output sections:
-  - `Estimate Summary`
-  - `Milestones`
-  - `Risks and Scope Tradeoffs`
+- Use `examples/output.md` as the canonical output shape.
+- Keep the title unnumbered. Immediately after it, write one clear, concise, concrete line in the form `**tl;dr:** ...` with the launch estimate, main scope condition, and primary risk.
+- Treat the `tl;dr` as the unnumbered lead, not a section. Follow it with sequential numbered section headings: `Estimate Summary`, `Milestones`, and `Risks and Scope Tradeoffs`.
+- Use hierarchically numbered subheadings only when a genuine nested structure is needed. Do not use bold or italic labels as substitute section headings.
 - Keep confidence language lightweight in the `tl;dr` and risks. Do not add a separate confidence field.
-- Start each bullet with a bold, concrete first sentence on the same line as the supporting detail.
+- Use a short paragraph when a section contains one coherent point. When a section needs multiple distinct points, use a numbered list to make the estimate easier to scan.
+- Apply bolding per numbered list. If every item in a list is one sentence, do not bold any item. If any item has two or more sentences, bold exactly the first sentence of every item in that list and keep all later sentences normal. Never mix bolded and unbolded first sentences within the same list; a bold sentence is content, not a substitute section heading.
 - Keep the full output to 400 words or less.
 - Do not present the estimate as certain.
 
 # Output
 
 A concise estimate summary that includes a launch date, the project MMDD, dated milestones, and the main scope tradeoffs in a format that can be pasted into Linear or a planning doc.
-
-# Examples
-
-Use `examples/output.md` as the formatting source of truth.

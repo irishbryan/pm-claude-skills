@@ -1,10 +1,10 @@
 # Decide Whether To Build Scheduled Sending Now
 
-Decision: Should the team build scheduled message sending in the next feature batch or defer it?
+**tl;dr:** Build a narrow one-time scheduled sending feature now because customer value is high, but proceed only if the team can contain delivery-state risk.
 
-## 1. Decision To Make
+## 1. Decision
 
-Use this worksheet to decide whether scheduled sending should enter the next feature batch or wait until the core messaging flow is more mature.
+Should the team build scheduled message sending in the next feature batch or defer it until the core messaging flow is more mature?
 
 ## 2. Background
 

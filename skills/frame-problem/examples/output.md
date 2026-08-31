@@ -1,33 +1,27 @@
-Problem: Trial admins cannot evaluate team permissions before purchase.
+# Trial admins cannot confirm permission fit during security review
 
-> tl;dr: Trial admins cannot confirm whether role permissions match their team's governance needs before they buy. This creates trust and conversion risk because security-minded buyers have to rely on sales assurances instead of testing the controls themselves.
+**tl;dr:** When security-conscious trial admins review access controls before purchase, they cannot inspect or test role behavior, forcing them to rely on Sales and leaving governance fit uncertain.
 
-Problem
+## 1. Problem
 
-Admins evaluating the product cannot inspect or test role permissions during trial. They have to ask sales or infer from docs, which makes permission fit uncertain before purchase.
+When trial admins reach security and governance review, they need to verify what each role can see and change. The evaluation workflow breaks because they cannot inspect or test role behavior directly, so they must rely on documentation and conversations with Sales.
 
-Impact
+## 2. Users and Impact
 
-Security-conscious admins are the main users. They need confidence that team access controls match internal governance needs before they commit.
+1. **Security-conscious administrators need to validate role behavior before approving the product.** Without direct inspection, they cannot confidently determine whether access controls meet internal governance requirements.
 
-Buying committees are affected before adoption. Permission uncertainty can slow approval or push teams toward tools where access behavior is easier to verify.
+2. **Buying committees inherit uncertainty when governance fit cannot be demonstrated directly.** This adds evaluation effort and can delay internal approval.
 
-Sales and support carry the operational cost. They answer repeated access-control questions that prospects should be able to validate directly.
+3. **Sales and Support absorb the current workaround.** They must repeatedly explain permission behavior, although the effect on conversion or sales-cycle length is unknown.
 
-Why Now
+## 3. Evidence
 
-Larger teams are entering the pipeline. Permissions are becoming a buying criterion rather than an admin detail.
+1. **Sales and Support receive repeated access-control questions from prospects.** This suggests that permission uncertainty recurs during product evaluation.
 
-The evaluation gap compounds. Prospects who cannot test governance controls may assume the product is not mature enough for their team.
+2. **The commercial impact has not been quantified.** Available evidence does not establish how often permission concerns delay or prevent purchase.
 
-Recommendation
+## 4. Constraints and Non-goals
 
-Research first. Validate which permission questions block purchase and what evidence buyers need before deciding whether this problem is worth shaping.
+1. **The frame is limited to evaluation confidence and purchase friction.** It does not define how permission behavior should eventually be exposed or tested.
 
-Keep the goal narrow. The frame is about evaluation confidence and purchase friction, not redesigning the permission model.
-
-Out Of Scope
-
-Full role redesign is excluded. This frame should not change permission semantics.
-
-Enterprise policy automation is excluded. The immediate problem is evaluation clarity, not compliance workflow.
+2. **Changing role semantics and adding enterprise policy automation are non-goals.** Those concerns would broaden the problem beyond evaluating the product's existing access controls.

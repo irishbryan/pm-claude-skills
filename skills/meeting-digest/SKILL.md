@@ -30,7 +30,7 @@ Pull the highest-signal takeaways out of recent meetings so a PM can quickly sha
 - If multiple plausible meetings match, ask the user to narrow before summarizing.
 - If no meeting matches, say no matching Granola meeting was found and ask for a tighter title, date, or topic.
 - Extract only the highest-signal details:
-  - one concrete `tl;dr`
+  - one concrete summary
   - decisions made
   - discussion context needed to understand decisions, risks, disagreements, or open questions
   - action items with owners and next steps when available
@@ -42,21 +42,18 @@ Pull the highest-signal takeaways out of recent meetings so a PM can quickly sha
 - Never invent attendees, decisions, action items, owners, dates, or metrics beyond what the meeting notes support.
 - Do not include Granola citation links.
 - Keep the output brief, high-signal, and Slack-ready.
-- Follow `examples/output.md` as the canonical output template.
-- Match its title format, `tl;dr` line, italic optional section headings, numbered list style, and bold-first-sentence item pattern.
-- Treat `Decisions Made`, `Discussion Summary`, and `Action Items` as optional sections.
+- Use `examples/output.md` as the canonical output shape.
+- Keep the title unnumbered. Immediately after it, write one clear, concise, concrete line in the form `**tl;dr:** ...` with the most important decision, change, blocker, or next action.
+- Treat the `tl;dr` as the unnumbered lead, not a section. Follow it with supported sections from `Decisions Made`, `Discussion Context`, and `Action Items` as sequential numbered headings.
+- Treat `Decisions Made`, `Discussion Context`, and `Action Items` as optional sections.
 - Omit optional sections that are not supported by the meeting notes.
+- Renumber the remaining sections sequentially when an optional section is omitted.
+- Use hierarchically numbered subheadings only when a genuine nested structure is needed. Do not use bold or italic labels as substitute section headings.
 - Do not include empty sections or filler like `None`.
-- Use numbered lists under optional sections.
-- Each list item must follow this pattern: `1. **Concise statement.** Short supporting context.`
-- Keep each bold first sentence concrete, standalone, and ideally under 10 words.
-- Do not bold the whole list item.
+- Use a short paragraph when a section contains one coherent point. When a section needs multiple distinct points, use a numbered list to make the digest easier to scan.
+- Apply bolding per numbered list. If every item in a list is one sentence, do not bold any item. If any item has two or more sentences, bold exactly the first sentence of every item in that list and keep all later sentences normal. Never mix bolded and unbolded first sentences within the same list; a bold sentence is content, not a substitute section heading.
 - Keep the full answer to 150 words or less, and prefer 75-120 words.
 
 # Output
 
-A short meeting digest with a title, one `tl;dr`, and only the decision, discussion, and action sections supported by the meeting notes.
-
-# Examples
-
-Use `examples/output.md` as the formatting source of truth.
+A short meeting digest with a title, concrete `tl;dr`, and only the decision, discussion, and action sections supported by the meeting notes.
